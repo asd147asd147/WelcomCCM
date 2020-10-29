@@ -11,6 +11,17 @@ const cors = require('cors');
 const routes = require('./routes');
 const logger = require('./utils/logger');
 
+const { Client } = require('pg');
+
+const client = new Client({
+	user : 'postgres',
+	host : 'localhost',
+	database : 'ccm',
+	password : 'postgres',
+	port : 5432,
+});
+
+
 const app = express();
 
 app.enable('trust proxy');
@@ -43,5 +54,27 @@ app.use(routes);
 app.use(function (err, req, res, next) {
   res.status(500).json({ code: 500, data: { msg: "Internal Server Error", err: err }});
 });
+
+client.connect();
+
+const query = 'SELECT * FROM public.user;';
+
+client.query(query)
+	.then(res => {
+		const rows = res.rows;
+		rows.map(row => {
+			console.log(`Read: ${JSON.stringify(row)}`);
+		});
+		app.get('/', function(req, res){
+			res.send(rows);
+		});
+		client.end();
+		
+	})
+	.catch(err => {
+		console.log(err);
+	});
+
+
 
 module.exports = app;

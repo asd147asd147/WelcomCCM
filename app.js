@@ -1,5 +1,6 @@
 const logger = require('./src/utils/logger');
 const db = require('./src/models');
+
 require('dotenv').config();
 
 process.on('uncaughtException', (err) => {
@@ -18,8 +19,10 @@ db.sequelize
   .then(() => {
     server.listen(process.env.PORT, () => {
       logger.info(`App listening on PORT ${process.env.PORT}`);
-    });
-  });
+  })
+});
+  
+
 
 process.on('unhandledRejection', (err) => {
   logger.error('UNHANDLED REJECTION! 💥 Shutting down...');
