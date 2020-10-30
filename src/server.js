@@ -21,7 +21,6 @@ const client = new Client({
 	port : 5432,
 });
 
-
 const app = express();
 
 app.enable('trust proxy');
@@ -55,26 +54,24 @@ app.use(function (err, req, res, next) {
   res.status(500).json({ code: 500, data: { msg: "Internal Server Error", err: err }});
 });
 
-client.connect();
+// client.connect();
 
-const query = 'SELECT * FROM public.user;';
+// const query = 'SELECT * FROM public.user;';
 
-client.query(query)
-	.then(res => {
-		const rows = res.rows;
-		rows.map(row => {
-			console.log(`Read: ${JSON.stringify(row)}`);
-		});
-		app.get('/', function(req, res){
-			res.send(rows);
-		});
-		client.end();
+// client.query(query)
+// 	.then(res => {
+// 		const rows = res.rows;
+// 		rows.map(row => {
+// 			console.log(`Read: ${JSON.stringify(row)}`);
+// 		});
+// 		app.get('/', function(req, res){
+// 			res.send(rows);
+// 		});
+// 		client.end();
 		
-	})
-	.catch(err => {
-		console.log(err);
-	});
-
-//test fork commit
-
+// 	})
+// 	.catch(err => {
+// 		console.log(err);
+// 	});
+	
 module.exports = app;

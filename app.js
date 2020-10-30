@@ -21,7 +21,6 @@ db.sequelize
       logger.info(`App listening on PORT ${process.env.PORT}`);
   })
 });
-  
 
 
 process.on('unhandledRejection', (err) => {
@@ -38,3 +37,19 @@ process.on('SIGTERM', () => {
     logger.error('💥 Process terminated!');
   });
 });
+
+// const React = require('react');
+// const ReactDOM = require('react-dom');
+
+// class HelloMessage extends React.Component {
+//   render() {
+//     return React.createElement(
+//       "div",
+//       null,
+//       "Hello ",
+//       this.props.name
+//     );
+//   }
+// }
+
+// ReactDOM.render(React.createElement(HelloMessage, { name: "Taylor" }), document.getElementsByTagName('head'));
