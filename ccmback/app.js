@@ -21,8 +21,6 @@ db.sequelize
       logger.info(`App listening on PORT ${process.env.PORT}`);
   })
 });
-  
-
 
 process.on('unhandledRejection', (err) => {
   logger.error('UNHANDLED REJECTION! 💥 Shutting down...');
