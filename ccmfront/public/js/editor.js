@@ -1,8 +1,11 @@
 const executeCodeBtn = document.querySelector('.editor__run');
 const resetCodeBtn = document.querySelector('.editor__reset');
 
-let codeEditor = ace.edit("editorCode");
-let defaultCode = 'console.log("Hello World!")';
+let codeEditor = ace.edit("editorCode",{
+    mode : "ace/mode/python",
+    selectionStyle: "text",
+});
+let defaultCode = 'print("Hello World!")';
 let consoleMessages = [];
 
 let  editorLib = {
@@ -16,6 +19,7 @@ let  editorLib = {
             fontSize: '15pt',
             enableBasicAutocompletion: true,
             enableLiveAutocompletion: true,
+            autoScrollEditorIntoView: true,
         });
 
         codeEditor.setValue(defaultCode);
@@ -25,7 +29,6 @@ let  editorLib = {
 executeCodeBtn.addEventListener('click', () => {
 
     const userCode = codeEditor.getValue();
-
     try {
         new Function(userCode)();
     } catch (err){
