@@ -1,4 +1,0 @@
-  File "./data/user.py", line 1
-    print'hello,world!\n')
-         ^
-SyntaxError: invalid syntax
