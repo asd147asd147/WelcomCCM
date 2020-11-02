@@ -9,7 +9,7 @@ let  editorLib = {
     init(){
         codeEditor.setTheme("ace/theme/dracula");
 
-        codeEditor.session.setMode("ace/mode/python");
+        codeEditor.session.setMode("ace/mode/c_cpp");
 
         codeEditor.setOptions({
             fontFamily: 'Inconsolata',
