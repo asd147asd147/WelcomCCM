@@ -1,2 +1,1 @@
-hello,world!
-
+{"time": 0.49, "output": "hello world\r\n", "memory": 126976}
