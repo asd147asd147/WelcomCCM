@@ -13,6 +13,7 @@ let  editorLib = {
         codeEditor.setTheme("ace/theme/dracula");
 
         codeEditor.session.setMode("ace/mode/python");
+        codeEditor.session.setUseWrapMode(true);
 
         codeEditor.setOptions({
             fontFamily: 'Inconsolata',
@@ -29,8 +30,9 @@ let  editorLib = {
 executeCodeBtn.addEventListener('click', () => {
 
     const userCode = codeEditor.getValue();
+    var jsonfile = JSON.stringify(userCode);
     try {
-        new Function(userCode)();
+        console.log(jsonfile);
     } catch (err){
         console.log(err);
     }
