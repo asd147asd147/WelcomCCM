@@ -1,0 +1,28 @@
+version: "3.3"
+
+services:
+  front:
+    image: ccmfront:1.2
+    build:
+      context: ./ccmfront
+      dockerfile: Dockerfile
+    volumes:
+      - "./ccmfront:/app"
+      - "./ccmfront/app/node_modules"
+    ports:
+      - "4000:3000"
+    stdin_open: true
+    tty: true
+
+  compiler:
+    image: ccmcomfiler:1.2
+    build:
+      context: ./ccmcompiler
+      dockerfile: Dockerfile
+    volumes:
+      - "./ccmcompiler:/app"
+      - "./ccmcompiler/app/node_modules"
+    ports:
+      - "5000:3000"
+    stdin_open: true
+    tty: true
