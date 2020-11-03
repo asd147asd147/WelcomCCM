@@ -5,8 +5,10 @@ import json
 import sys
 import psutil
 import languages
+import sys
 
 result = {"time": 0, "output": "", "memory" : 0} 
+select = sys.argv[1]
 
 path = os.path.abspath('./data/user.py')
 cmd_arr = ["python", path]
@@ -22,7 +24,11 @@ end_time = timer()
 real_time = round(end_time - start_time,2)
 
 result['time'] = real_time
-result['output'] = stdout.decode('utf8')
+if(stdout.decode('utf8') == ""):
+    result['output'] = stderr.decode('utf8')
+else:
+    result['output'] = stdout.decode('utf8')
+
 result['memory'] = Memoryuse
 json_data = json.dumps(result)
 print(json_data)
