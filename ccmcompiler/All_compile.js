@@ -2,7 +2,7 @@ var fs = require('fs');
 var process = require('child_process');
 
 var select = "python"
-
+// select c++, c ~~
 process.execFile('./dist/compile',[select],function (err,stdout,stderr) {
     if(err) {
         fs.writeFile('./result/user.txt',stderr,'utf-8',function(e){

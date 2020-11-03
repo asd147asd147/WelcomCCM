@@ -13,19 +13,21 @@ select = sys.argv[1]
 path = os.path.abspath('./data/user.py')
 cmd_arr = ["python", path]
 
+start_time = timer()
 child = subprocess.Popen(cmd_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 p = psutil.Process(child.pid)
 Memoryuse = p.memory_info()[0]
-start_time = timer()
-(stdout, stderr) = child.communicate()
 
+(stdout, stderr) = child.communicate()
 end_time = timer()
 
 real_time = round(end_time - start_time,2)
 
 result['time'] = real_time
 if(stdout.decode('utf8') == ""):
-    result['output'] = stderr.decode('utf8')
+    index = stderr.decode('utf8').find(',')
+    string = stderr.decode('utf8')[index+2:]
+    result['output'] = string
 else:
     result['output'] = stdout.decode('utf8')
 
