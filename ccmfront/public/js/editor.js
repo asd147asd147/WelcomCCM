@@ -33,9 +33,9 @@ let  editorLib = {
     },
     init(){
         codeEditor.setTheme("ace/theme/dracula");
-
         codeEditor.session.setMode("ace/mode/python");
         codeEditor.session.setUseWrapMode(true);
+
 
         codeEditor.setOptions({
             fontFamily: 'Inconsolata',
