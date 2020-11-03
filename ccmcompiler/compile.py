@@ -4,6 +4,7 @@ from timeit import default_timer as timer
 import json
 import sys
 import psutil
+import languages
 
 result = {"time": 0, "output": "", "memory" : 0} 
 
