@@ -63,8 +63,8 @@ let console = (function (oldConsole){
         warn: function(text){
             oldConsole.warn(text);
         },
-        error: function(text){
-            oldConsole.error(text);
+        error: function(err){
+            oldConsole.error(err);
             consoleMessages.push({
                 message: `${err.name}: ${err.message}`,
                     class: "log log--error"
