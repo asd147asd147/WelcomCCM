@@ -1,1 +1,1 @@
-{"time": 0.49, "output": "hello world\r\n", "memory": 126976}
+{"time": 0.05, "output": "hello world\r\n", "memory": 126976}
