@@ -19,6 +19,7 @@ let  editorLib = {
         }
     },
     printToConsole(){
+        // console.log("print");
         consoleMessages.forEach(log => {
             const newLogItem = document.createElement('li');
             const newLogText = document.createElement('pre');
@@ -52,15 +53,30 @@ let  editorLib = {
 executeCodeBtn.addEventListener('click', () => {
     editorLib.clearConsoleScreen();
     const userCode = codeEditor.getValue();
-    var jsonfile = JSON.stringify(userCode);
+    const jsonfile = JSON.stringify(userCode);
     try {
-
-        // console.log(jsonfile);
-        // new Function(userCode)();
+        fetch('http://localhost:3001/', {
+            method: 'POST',
+            body: JSON.stringify({code: `${ jsonfile }`}),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+            })
+            .then(res => res.json())
+            .then(res => {
+                // console.log(res.result);
+                const result_log = JSON.parse(res.result).split('\n');
+                result_log.pop();
+                // console.log(result_log);
+                result_log.forEach(res_log =>{
+                    console.log(res_log);
+                })
+                // console.log(JSON.parse(res.result));
+                editorLib.printToConsole();
+            });
     } catch (err){
         console.log(err);
     }
-    editorLib.printToConsole();
 });
 
 resetCodeBtn.addEventListener('click', ()=>{
