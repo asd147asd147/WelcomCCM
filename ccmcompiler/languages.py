@@ -6,7 +6,8 @@ class language:
                         "exe_path" : os.path.abspath('./data')+'/main',
                         "max_real_time" : 10000,
                         "max_memory" : 256 * 1024 * 1024,
-                        "compile_cmd" : "gcc -o {exe_path} {src_path}"
+                        "compile_cmd" : "gcc",
+                        "arg1" : "-o {exe_path} {src_path}"
                     },
                 "run":
                     {"command" : "{exe_path}" 
@@ -18,7 +19,8 @@ class language:
                         "exe_path" : os.path.abspath('./data')+'/main',
                         "max_real_time" : 10000,
                         "max_memory" : 256 * 1024 * 1024,
-                        "compile_cmd" : "g++ -o {exe_path} {src_path}"
+                        "compile_cmd" : "g++",
+                        "arg1" : "-o {exe_path} {src_path}"
                     },
                 "run":
                     {"command" : "{exe_path}" 
@@ -31,12 +33,14 @@ class language:
                             "exe_path" : os.path.abspath('./data')+'/user.pyc',
                             "max_real_time": 10000,
                             "max_memory": 128 * 1024 * 1024,
-                            "compile_cmd" : "python -m {src_path}"
+                            "compile_cmd" : "python",
+                            "arg1" : "-m {src_path}"
                         }
                     ,
                     "run":
                         {
-                            "command" : "python {exe_path}"
+                            "command" : "python",
+                            "arg1" : "{exe_path}"
                         }
                     }
     def __init__(self, select):

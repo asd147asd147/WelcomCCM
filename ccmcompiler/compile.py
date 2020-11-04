@@ -14,7 +14,7 @@ select = sys.argv[1]
 com_language = lan.language(select).compile_language
 
 path = com_language["compile"]["src_path"]
-cmd_arr = ["python", path]
+cmd_arr = [com_language["compile"]["compile_cmd"], path]
 
 start_time = timer()
 run = subprocess.Popen(cmd_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
