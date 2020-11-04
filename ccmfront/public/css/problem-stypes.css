@@ -1,0 +1,48 @@
+.content {
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-bg);
+    color: var(--main-col);
+}
+
+.content-head {
+    height: 50px;
+    width: 100%;
+    border-bottom: var(--dist) solid 1px;
+    align-content: center;
+}
+
+.problem-title {
+    height: fit-content;
+    width: fit-content;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.content-body {
+    height: 100%;
+    display: flex;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.root {
+    height : 100%;
+    width : 30%;
+    overflow-y: scroll;
+    display : inline-block;
+    padding: 20px;
+    border-right: var(--dist) solid 1px;
+    font-family: 'Consolas', sans-serif;
+    font-size: 13pt;
+    line-height: 1.5;
+}
+
+.content-foot {
+    height: 70px;
+    width: 100%;
+    border-top: var(--dist) solid 1px;
+}
