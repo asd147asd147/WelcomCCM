@@ -1,6 +1,5 @@
 var process = require('child_process');
 var fs = require('fs');
-
 exports.compile = function(callback){
     process.exec('python ./data/user.py',function (err,stdout,stderr) {
         if (err) {

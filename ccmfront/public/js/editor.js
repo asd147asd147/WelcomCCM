@@ -33,14 +33,15 @@ let  editorLib = {
         })
     },
     init(){
-        codeEditor.setTheme("ace/theme/dracula");
 
+        codeEditor.setTheme("ace/theme/dracula");
         codeEditor.session.setMode("ace/mode/python");
         codeEditor.session.setUseWrapMode(true);
 
+
         codeEditor.setOptions({
             fontFamily: 'Inconsolata',
-            fontSize: '15pt',
+            fontSize: '12pt',
             enableBasicAutocompletion: true,
             enableLiveAutocompletion: true,
             autoScrollEditorIntoView: true,
@@ -77,6 +78,7 @@ executeCodeBtn.addEventListener('click', () => {
     } catch (err){
         console.log(err);
     }
+    editorLib.printToConsole();
 });
 
 resetCodeBtn.addEventListener('click', ()=>{

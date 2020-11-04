@@ -1,38 +1,40 @@
-.App {
-  text-align: center;
+.problem{
+  height : 100%;
+  width : 100%;
+  overflow-y: scroll;
+  display : inline-block;
+  padding: 20px;
+  border-right: var(--dist) solid 1px;
+  font-family: 'Consolas', sans-serif;
+  font-size: 10pt;
+  line-height: 1.5;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.problem::-webkit-scrollbar {
+  width: 12px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.problem::-webkit-scrollbar-thumb {
+  background-color: #2a2e38;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.problem-description-body-content {
+  width: 100%;
+  padding: 10px;
+  white-space: normal;
 }
 
-.App-link {
-  color: #61dafb;
+.problem-description-body-restriction {
+  width: 100%;
+  padding: 10px;
+  white-space: normal;
+}
+.problem-description-body-ioexam {
+  width: 100%;
+  padding: 10px;
+  white-space: normal;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ul {
+  padding-left: 20px;
 }
