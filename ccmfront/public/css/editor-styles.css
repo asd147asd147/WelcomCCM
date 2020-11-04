@@ -92,7 +92,6 @@ html, body{
     bottom: 0;
     left: 0;
     right: 0;
-    /* border: 1px solid var(--editor-border); */
 }
 
 .content {
@@ -136,3 +135,11 @@ html, body{
     width: 100%;
     border-top: var(--dist) solid 1px;
 }
+
+
+.ace_editor, .ace_editor *{
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace !important;
+    font-size: 25px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    }
