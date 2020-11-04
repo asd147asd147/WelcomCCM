@@ -4,21 +4,24 @@ from timeit import default_timer as timer
 import json
 import sys
 import psutil
-import languages
+import languages as lan
 import sys
 
+com_language = dict()
 result = {"time": 0, "output": "", "memory" : 0} 
 select = sys.argv[1]
 
-path = os.path.abspath('./data/user.py')
+com_language = lan.language(select).compile_language
+
+path = com_language["compile"]["src_path"]
 cmd_arr = ["python", path]
 
 start_time = timer()
-child = subprocess.Popen(cmd_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-p = psutil.Process(child.pid)
+run = subprocess.Popen(cmd_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+p = psutil.Process(run.pid)
 Memoryuse = p.memory_info()[0]
 
-(stdout, stderr) = child.communicate()
+(stdout, stderr) = run.communicate()
 end_time = timer()
 
 real_time = round(end_time - start_time,2)
@@ -34,5 +37,3 @@ else:
 result['memory'] = Memoryuse
 json_data = json.dumps(result)
 print(json_data)
-
-
