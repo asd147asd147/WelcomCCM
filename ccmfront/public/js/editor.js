@@ -7,13 +7,13 @@ let consoleMessages = [];
 
 let  editorLib = {
     init(){
-        codeEditor.setTheme("ace/theme/dracula");
+        codeEditor.setTheme("ace/theme/nord_dark");
 
         codeEditor.session.setMode("ace/mode/python");
 
         codeEditor.setOptions({
             fontFamily: 'Inconsolata',
-            fontSize: '15pt',
+            fontSize: '12pt',
             enableBasicAutocompletion: true,
             enableLiveAutocompletion: true,
         });
