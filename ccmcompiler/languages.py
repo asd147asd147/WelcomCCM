@@ -50,3 +50,4 @@ class language:
             self.compile_language = self.c_language
         elif(select == "cpp"):
             self.compile_language = self.cpp_language
+
