@@ -32,6 +32,7 @@ let  editorLib = {
         })
     },
     init(){
+
         codeEditor.setTheme("ace/theme/dracula");
         codeEditor.session.setMode("ace/mode/python");
         codeEditor.session.setUseWrapMode(true);
@@ -39,7 +40,7 @@ let  editorLib = {
 
         codeEditor.setOptions({
             fontFamily: 'Inconsolata',
-            fontSize: '15pt',
+            fontSize: '12pt',
             enableBasicAutocompletion: true,
             enableLiveAutocompletion: true,
             autoScrollEditorIntoView: true,
