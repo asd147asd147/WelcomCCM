@@ -18,7 +18,7 @@ exports.allcompile = function(select, callback) {
                     callback(400);
                 });
             } else {
-                fs.writeFile('./result/user.txt',stdout,'utf-8',function(e){
+                fs.writeFile('./result/result.txt',stdout,'utf-8',function(e){
                     if(e){
                         console.log(e);
                     }
