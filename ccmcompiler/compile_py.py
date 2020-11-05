@@ -7,30 +7,38 @@ import psutil
 import languages as lan
 import sys
 
+
+
 com_language = dict()
-result = {"time": 0, "output": "", "memory" : 0} 
+result = {"time": 0, "output": "", "memory" : 0,"error" : 0} 
 select = sys.argv[1]
+timeout_sec = float(sys.argv[2])
 
 com_language = lan.language(select).compile_language
-
-path = com_language["compile"]["src_path"]
 cmd_arr = com_language["compile"]["compile_cmd"]
-
 start_time = timer()
-run = subprocess.Popen(args =cmd_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-p = psutil.Process(run.pid)
-Memoryuse = p.memory_info()[0]
 
-(stdout, stderr) = run.communicate()
+try:
+    run = subprocess.Popen(args = cmd_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p = psutil.Process(run.pid)
+    Memoryuse = p.memory_info()[0]
+    (stdout, stderr) = run.communicate(timeout = timeout_sec)
+except subprocess.TimeoutExpired:
+    run.kill()
+    result["error"]= 1
+    result["output"] = "TimeOut!"
+    print(json.dumps(result))
+    sys.exit(0)
+
 end_time = timer()
 
 real_time = round(end_time - start_time,4)
-
 result['time'] = real_time
 if(stdout.decode('utf8') == ""):
     index = stderr.decode('utf8').find(',')
     string = stderr.decode('utf8')[index+2:]
     result['output'] = string
+    result["error"] = 1
 else:
     result['output'] = stdout.decode('utf8')
 

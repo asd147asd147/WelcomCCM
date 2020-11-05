@@ -7,28 +7,38 @@
   <title>python Code Editor</title>
 </head>
 <body>
-  <div class="editor">
-    <div class="editor__wrapper">
-      <div class="editor__body">
-        <div id="editorCode" class="editor__code"></div>
+  <div class="content">
+    <div class="content-head">
+      <div class="problem-title">
+        <h2></h2>
       </div>
-      <div class="editor__footer">
-        <div class="editor__footer--left">
-          <button class="editor__btn editor__run">Run ></button>
-          <button class="editor__btn editor__reset">Reset ></button>
-        </div>
-        <div class="editor__footer--right">
-          <div class="editor__consols">
-            <ul class="editor__console-logs"></ul>
+    </div>
+    <div class="content-body">
+      <div id="root"></div>
+      <div class="editor">
+        <div class="editor__wrapper">
+          <div class="editor__body">
+            <div id="editorCode" class="editor__code"></div>
+          </div>
+          <div class="editor__footer">
+            <div class="editor__footer--top">
+              <button class="editor__btn editor__run">Run ></button>
+              <button class="editor__btn editor__reset">Reset ></button>
+            </div>
+            <div class="editor__footer--bottom">
+              <div class="editor__consols">
+                <ul class="editor__console-logs"></ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="content-foot"></div>
   </div>
   <script src="./js/ace-editor/src-min/ace.js"></script>
   <script src="./js/ace-editor/src-min/mode-python.js"></script>
   <script src="./js/ace-editor/src-min/ext-language_tools.js"></script>
-
   <script src="./js/editor.js"></script>
   <script src="./js/editor-console.js"></script>
   <div id="root"></div>

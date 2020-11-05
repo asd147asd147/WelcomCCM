@@ -9,7 +9,7 @@ import languages as lan
 com_language = dict()
 result = {"time": 0, "output": "", "memory" : "0"} 
 select = sys.argv[1]
-
+timeout_sec = float(sys.argv[2])
 com_language = lan.language(select).compile_language
 
 path = com_language["compile"]["src_path"]
@@ -28,11 +28,17 @@ if(stderr.decode('utf8') !=""):
 else:
     run_arr = [com_language["run"]["command"]]
     start_time = timer()
-    run = subprocess.Popen(run_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    p = psutil.Process(run.pid)
-    Memoryuse = p.memory_info()[0]
-
-    (stdout, stderr) = run.communicate()
+    try:
+        run = subprocess.Popen(args =run_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        p = psutil.Process(run.pid)
+        Memoryuse = p.memory_info()[0]
+        (stdout, stderr) = run.communicate(timeout = timeout_sec)
+    except subprocess.TimeoutExpired:
+        run.kill()
+        result["error"]= 1
+        result["output"] = "TimeOut!"
+        print(json.dumps(result))
+        sys.exit(0)
     end_time = timer()
 
     real_time = round(end_time - start_time,4)

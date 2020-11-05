@@ -1,1 +1,3 @@
-print("hello python")
+for i in range(1000000):
+    ""
+print("pass")

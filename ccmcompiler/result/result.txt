@@ -1,1 +1,1 @@
-{"time": 0.0532, "output": "hello python\r\n", "memory": 106496}
+{"time": 0, "output": "TimeOut!", "memory": "0", "error": 1}
