@@ -2,10 +2,12 @@
 :root{
     --editor-bg: #eee;
     --editor-border: #3f87a6;
-    --editor-gutter-border: #85d25b;
+    --editor-gutter-border: #7aecb3;
     --main-bg: #2e3440;
     --main-col: #d8dee9;
+    --text-col: #aaff83;
     --dist: #232831;
+    --option-col: #37485d;
 }
 
 * {
@@ -56,6 +58,7 @@ html, body{
 
 .editor__footer--top{
     display: flex;
+    padding-left: 10px;
     height: fit-content;
 }
 
@@ -67,11 +70,15 @@ html, body{
 }
 
 .editor__btn{
-    border: 0;
+    border: 1px solid var(--option-col);
     padding: .5em;
-    background-color: var(--main-col);
+    color: white;
+    font-weight: 600;
+    background-color: var(--option-col);
+    border-radius: 5px;
+    margin: 0.2rem;
     /* border: 2px solid #333; */
-    /* margin-top: 1em; */
+    margin-left: 5px;
     width: 100px;
     cursor: pointer;
 }
@@ -96,54 +103,24 @@ html, body{
     right: 0;
 }
 
-.content {
-    height: 100%;
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--main-bg);
-    color: var(--main-col);
-}
-
-.content-head {
-    height: 50px;
-    width: 100%;
-    border-bottom: var(--dist) solid 1px;
-    align-content: center;
-}
-
-.problem-title {
-    height: fit-content;
-    width: fit-content;
-    margin-left: 20px;
-    margin-top: 20px;
-}
-
-.content-body {
-    height: 100%;
-    display: flex;
-    width: auto;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-#root {
-    height : 100%;
-    width : 30%;
-}
-
-.content-foot {
-    height: 50px;
-    width: 100%;
-    border-top: var(--dist) solid 1px;
-}
-
-
 .ace_editor, .ace_editor *{
     font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace !important;
     font-size: 25px !important;
     font-weight: 400 !important;
     letter-spacing: 0 !important;
+}
+
+
+.ace-dracula .ace_marker-layer .ace_selected-word {
+    box-shadow: none !important;
+    background-color: #444863;
+    border-radius: 3px;
+}
+
+.ace-crimson-editor .ace_marker-layer .ace_selected-word{
+    box-shadow: none !important;
+    background-color: #c9cdeb;
+    border-radius: 3px;
 }
 
 /* Editor Conosle Logs */
@@ -159,4 +136,60 @@ html, body{
 
 .ace_gutter {
     border-left: 5px solid var(--editor-gutter-border);
+}
+
+/* Setting Style */
+.setting{
+    position: relative;
+    padding: 0 1rem;
+    box-shadow: inset 0 -0.0625rem #172334;
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+    height: 3rem;
+}
+
+.setting__theme{
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.setting__theme label{
+    border: 1px solid var(--option-col);
+    background-color: rgba(0,0,0,0);
+    color: var(--option-col);
+    padding: 0.2rem 0.5rem;
+    font-size: 12pt;
+    font-weight: 600;
+}
+.setting__theme input[type="radio"]:checked + label{
+    color:white;
+    background-color: var(--option-col);
+    cursor: pointer;
+}
+
+.setting__theme label:hover{
+    color:white;
+    background-color: var(--option-col);
+    cursor: pointer;
+}
+.setting__theme input[type="radio"] {
+    box-sizing: border-box;
+    display: none;
+    padding: 0;
+}
+
+.setting__theme .theme__dark {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    margin-right: -1px;
+}
+
+.setting__theme .theme__light {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin-left: -1px;
 }
