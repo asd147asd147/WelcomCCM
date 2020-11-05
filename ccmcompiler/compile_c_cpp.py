@@ -7,7 +7,7 @@ import psutil
 import languages as lan
 
 com_language = dict()
-result = {"time": 0, "output": "", "memory" : "0"} 
+result = {"time": 0, "output": "", "memory" : "0","error" : "noerror"} 
 select = sys.argv[1]
 timeout_sec = float(sys.argv[2])
 com_language = lan.language(select).compile_language
@@ -23,6 +23,7 @@ if(stderr.decode('utf8') !=""):
     string = stderr.decode('utf8')[index:]
     result['output'] = string
     json_data = json.dumps(result)
+    result['error'] = "code"
     print(result)
 
 else:
@@ -35,7 +36,7 @@ else:
         (stdout, stderr) = run.communicate(timeout = timeout_sec)
     except subprocess.TimeoutExpired:
         run.kill()
-        result["error"]= 1
+        result["error"]= "timeout"
         result["output"] = "TimeOut!"
         print(json.dumps(result))
         sys.exit(0)
@@ -48,6 +49,7 @@ else:
         index = stderr.decode('utf8').find(',')
         string = stderr.decode('utf8')[index+2:]
         result['output'] = string
+        result['error'] = "code"
     else:
         result['output'] = stdout.decode('utf8')
 

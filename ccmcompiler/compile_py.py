@@ -10,7 +10,7 @@ import sys
 
 
 com_language = dict()
-result = {"time": 0, "output": "", "memory" : 0,"error" : 0} 
+result = {"time": 0, "output": "", "memory" : 0,"error" : "noerror"} 
 select = sys.argv[1]
 timeout_sec = float(sys.argv[2])
 
@@ -25,7 +25,7 @@ try:
     (stdout, stderr) = run.communicate(timeout = timeout_sec)
 except subprocess.TimeoutExpired:
     run.kill()
-    result["error"]= 1
+    result["error"]= "timeout"
     result["output"] = "TimeOut!"
     print(json.dumps(result))
     sys.exit(0)
@@ -38,7 +38,7 @@ if(stdout.decode('utf8') == ""):
     index = stderr.decode('utf8').find(',')
     string = stderr.decode('utf8')[index+2:]
     result['output'] = string
-    result["error"] = 1
+    result["error"] = "code"
 else:
     result['output'] = stdout.decode('utf8')
 

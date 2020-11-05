@@ -4,6 +4,7 @@ var process = require('child_process');
 var select = "c"
 // select c++, c ~~
 var time_out = 1
+
 if(select == "python"){
     process.execFile('./dist/compile_py',[select,time_out],function (err,stdout,stderr) {
         if(err) {

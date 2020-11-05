@@ -1,3 +1,3 @@
-for i in range(1000000):
+for i in range(100000000):
     ""
 print("pass")
