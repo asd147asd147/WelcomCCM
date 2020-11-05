@@ -73,7 +73,7 @@ executeCodeBtn.addEventListener('click', () => {
     const userCode = codeEditor.getValue();
     const jsonfile = JSON.stringify(userCode);
     try {
-        fetch('http://localhost:3001/', {
+        fetch('http://choiwonjune.iptime.org:3001/', {
             method: 'POST',
             body: JSON.stringify({code: `${ jsonfile }`}),
             headers:{
