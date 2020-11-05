@@ -1,3 +1,1 @@
-for i in range(100000000):
-    ""
-print("pass")
+print("Hello World!")

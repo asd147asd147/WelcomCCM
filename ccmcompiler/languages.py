@@ -6,6 +6,7 @@ class language:
                         "exe_path" : os.path.abspath('./data')+'/main',
                         "max_real_time" : 10000,
                         "max_memory" : 256 * 1024 * 1024,
+
                         "compile_cmd" : "gcc -o "+os.path.abspath('./data')+'/main'+" "+ os.path.abspath('./data/main.c'),
                         
                     },
@@ -43,6 +44,7 @@ class language:
                         },
                     "lang" : "python"    
                     }
+
     def __init__(self, select):
         if(select == "python"):
             self.compile_language = self.py3_language
