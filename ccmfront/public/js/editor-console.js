@@ -30,7 +30,6 @@ let console = (function (oldConsole){
 
             oldConsole.log(consoleMessages);
         },
-
         log: function(text){
             let argsArray = Array.from(arguments);
             return argsArray.length != 1 ? this.logMultipleArguments(argsArray) : this.logSingleArgument(text);

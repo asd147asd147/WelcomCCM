@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class Problem_Content extends Component {
-  RestrictionList = this.props.data.restric.map((v,i) => {<li key={v.cont}>{v.cont}</li>});
-  example = this.props.data.ioexam.map(v => {
-    <div>
-      
-    <h5>입출력 예시 {v.id}</h5>
-    <ul>
-      <li key={v.input}>{v.input}</li>
-      <li key={v.output}>{v.output}</li>
-    </ul>
-    </div>
-  });
+class ProblemContent extends Component {
+  // RestrictionList = this.props.data.restric.map((v,i) => {return(<li key={v.cont}>{v.cont}</li>)});
+  // example = this.props.data.ioexam.map(v => {return(
+  //   <div>
+  //     <h5>입출력 예시 {v.id}</h5>
+  //     <ul>
+  //       <li key={v.input}>{v.input}</li>
+  //       <li key={v.output}>{v.output}</li>
+  //     </ul>
+  //   </div>
+  // )});
   
   render() {
     return (
@@ -56,7 +55,7 @@ class App extends Component{
   }
   render(){
       return (
-        <Problem_Content data={this.prob}></Problem_Content>
+        <ProblemContent data={this.prob}></ProblemContent>
       );
     }
 }

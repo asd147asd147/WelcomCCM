@@ -4,13 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/editor-styles.css">
+  <link rel="stylesheet" href="./css/problem-stypes.css">
   <title>python Code Editor</title>
 </head>
 <body>
   <div class="content">
     <div class="content-head">
-      <div class="problem-title">
-        <h2></h2>
+      <div class="setting">
+        <div class="setting__theme">
+          <input id="theme__dark" type="radio" name="theme__button" checked value="dreamweaver">
+          <label for="theme__dark" class="theme__dark">dark</label>
+          <input id="theme__light" type="radio" name="theme__button" value="dracula">
+          <label for="theme__light" class="theme__light">light</label>
+        </div>
       </div>
     </div>
     <div class="content-body">
@@ -39,8 +45,8 @@
   <script src="./js/ace-editor/src-min/ace.js"></script>
   <script src="./js/ace-editor/src-min/mode-python.js"></script>
   <script src="./js/ace-editor/src-min/ext-language_tools.js"></script>
+
   <script src="./js/editor.js"></script>
   <script src="./js/editor-console.js"></script>
-  <div id="root"></div>
 </body>
 </html>
