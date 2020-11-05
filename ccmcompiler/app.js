@@ -24,7 +24,7 @@ app.post('/',function(req,res){
         else{
             console.log(200);
         }
-        const result = fs.readFileSync("./result/user.txt");
+        const result = fs.readFileSync("./result/result.txt");
         const result_string = result.toString();
         console.log(result_string);
         res.send(JSON.stringify(result_string));

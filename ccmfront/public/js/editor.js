@@ -95,11 +95,14 @@ executeCodeBtn.addEventListener('click', () => {
                 console.log("Memory: " + memory/1024 + "KB");
                 // console.log(JSON.parse(res.result));
                 editorLib.printToConsole();
+            }).catch (function(){
+                console.log("Disconnected Compile Server");
+                editorLib.printToConsole();
             });
     } catch (err){
         console.log(err);
+        editorLib.printToConsole();
     }
-    editorLib.printToConsole();
 });
 
 resetCodeBtn.addEventListener('click', ()=>{
