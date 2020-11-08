@@ -23,7 +23,7 @@ html, body{
 
 .editor{
     height: 100%;
-    width: 70%;
+    width: 100%;
     display: inline-block;
     flex-direction: column;
     /* justify-content: center; */
@@ -156,7 +156,6 @@ html, body{
     display: inline-flex;
     vertical-align: middle;
 }
-
 .setting__theme label{
     border: 1px solid var(--option-col);
     background-color: rgba(0,0,0,0);
