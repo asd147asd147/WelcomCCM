@@ -8,14 +8,21 @@
     font-family: 'Consolas', sans-serif;
     font-size: 12pt;
     line-height: 1.5;
+    margin-right: 2px;
   }
   
   .problem::-webkit-scrollbar {
-    width: 12px;
+    width: 4px;
+    height: 4px;
   }
   
+  .problem::-webkit-scrollbar:hover {
+    width: 6px;
+  }
+
   .problem::-webkit-scrollbar-thumb {
-    background-color: #2a2e38;
+    background-color: #ffffff;
+    border-radius: 10px;
   }
   
   .problem-description-body-content {

@@ -32,7 +32,8 @@ class App extends Component{
       {id:2, input:'input data example2', output:'output data example2'},
       {id:3, input:'input data example3', output:'output data example3'}
     ]
-  }
+  };
+  
   render(){
     return (
       // <MainBlock cont="Challenge"></MainBlock>

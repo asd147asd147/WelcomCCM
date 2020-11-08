@@ -8,17 +8,14 @@ class PartitionBar extends Component {
       e.preventDefault();
       onmouseup = null;
       onmousemove = null;
-      console.log("closeDragElement");
     };
     elementDrag = (e) => {
       e.preventDefault();
-      console.log("elementDrag");
       this.setState((prevState) => {
         return {
           pos3: e.clientX
         }
       });
-      console.log("pos3 : " + (window.outerWidth-this.state.pos3));
       if(this.state.pos3>50 && (window.outerWidth-this.state.pos3)>50) {
         document.querySelector("#root").style.width = this.state.pos3+"px";
         document.querySelector(".problem").style.width = (this.state.pos3-10)+"px";
@@ -27,8 +24,6 @@ class PartitionBar extends Component {
     }
     dragMouseDown = (e) => {
       e.preventDefault();
-      console.log("dragMouseDown");
-      console.log("e.clientX = " + this.state.pos3);
       onmouseup = this.closeDragElment;
       onmousemove = this.elementDrag;
     };
