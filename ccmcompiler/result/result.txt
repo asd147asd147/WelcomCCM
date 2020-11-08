@@ -1,1 +1,1 @@
-{"time": 0.0707, "output": "Hello World!\r\n", "memory": 188416, "error": "noerror"}
+{"time": 0.0627, "output": "line 2\r\n    \r\n                        ^\r\nSyntaxError: unexpected EOF while parsing\r\n", "memory": 106496, "error": "code"}
