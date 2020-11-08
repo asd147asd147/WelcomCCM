@@ -8,33 +8,40 @@
     font-family: 'Consolas', sans-serif;
     font-size: 12pt;
     line-height: 1.5;
-  }
-  
-  .problem::-webkit-scrollbar {
-    width: 12px;
-  }
-  
-  .problem::-webkit-scrollbar-thumb {
-    background-color: #2a2e38;
-  }
-  
-  .problem-description-body-content {
-    width: 100%;
-    padding: 10px;
-    white-space: normal;
-  }
-  
-  .problem-description-body-restriction {
-    width: 100%;
-    padding: 10px;
-    white-space: normal;
-  }
-  .problem-description-body-ioexam {
-    width: 100%;
-    padding: 10px;
-    white-space: normal;
-  }
-  
-  ul {
-    padding-left: 20px;
-  }
+    margin-right: 2px;
+}
+
+.problem::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.problem::-webkit-scrollbar:hover {
+  width: 6px;
+}
+
+.problem::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.problem-description-body-content {
+  width: 100%;
+  padding: 10px;
+  white-space: normal;
+}
+
+.problem-description-body-restriction {
+  width: 100%;
+  padding: 10px;
+  white-space: normal;
+}
+.problem-description-body-ioexam {
+  width: 100%;
+  padding: 10px;
+  white-space: normal;
+}
+
+ul {
+  padding-left: 20px;
+}

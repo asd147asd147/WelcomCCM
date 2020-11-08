@@ -31,8 +31,8 @@ class App extends Component{
       {id:1, input:'input data example1', output:'output data example1'},
       {id:2, input:'input data example2', output:'output data example2'},
       {id:3, input:'input data example3', output:'output data example3'}
-    ],
-  }
+    ]
+  };
   render(){
     return (
       // <MainBlock cont="Challenge"></MainBlock>
