@@ -1,1 +1,1 @@
-{"time": 0.0627, "output": "line 2\r\n    \r\n                        ^\r\nSyntaxError: unexpected EOF while parsing\r\n", "memory": 106496, "error": "code"}
+{"time": 0, "output": "TimeOut!", "memory": 0, "error": "timeout"}
