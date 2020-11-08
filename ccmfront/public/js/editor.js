@@ -35,7 +35,8 @@ let  editorLib = {
         })
     },
     init(){
-        codeEditor.setTheme("ace/theme/dracula");
+
+        codeEditor.setTheme("ace/theme/nord_dark");
         codeEditor.session.setMode("ace/mode/python");
         codeEditor.session.setUseWrapMode(true);
 
