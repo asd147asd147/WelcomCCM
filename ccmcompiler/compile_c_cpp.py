@@ -24,7 +24,7 @@ if(stderr.decode('utf8') !=""):
     result['output'] = string
     json_data = json.dumps(result)
     result['error'] = "code"
-    print(result)
+    print(json.dumps(result))
 
 else:
     run_arr = [com_language["run"]["command"]]

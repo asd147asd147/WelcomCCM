@@ -14,15 +14,17 @@ result = {"time": 0, "output": "", "memory" : 0,"error" : "noerror"}
 select = sys.argv[1]
 timeout_sec = float(sys.argv[2])
 
+input_arr = os.path.abspath('./input/1.in')
 com_language = lan.language(select).compile_language
 cmd_arr = com_language["compile"]["compile_cmd"]
 start_time = timer()
 
 try:
-    run = subprocess.Popen(args = cmd_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    in_proc = subprocess.run(args=["type",input_arr],shell=True,capture_output=True)
+    run = subprocess.Popen(args = cmd_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE)
     p = psutil.Process(run.pid)
     Memoryuse = p.memory_info()[0]
-    (stdout, stderr) = run.communicate(timeout = timeout_sec)
+    (stdout, stderr) = run.communicate(timeout = timeout_sec,input=in_proc.stdout)
 except subprocess.TimeoutExpired:
     run.kill()
     result["error"]= "timeout"
