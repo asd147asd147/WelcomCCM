@@ -5,7 +5,6 @@ import './components/PratitionBar.css';
 import ProblemContent from './components/ProblemContent';
 import PartitionBar from './components/PartitionBar';
 
-
 class App extends Component{
   prob = {
     num:1,
