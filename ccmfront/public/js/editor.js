@@ -68,9 +68,8 @@ light_theme.addEventListener('click', () => {
     document.documentElement.style.setProperty('--text-col', '#3d3d3d');
     document.documentElement.style.setProperty('--dist', '#bbbbbb');
     document.documentElement.style.setProperty('--editor-gutter-border', '#aaff83');
-    document.documentElement.style.setProperty('--scroll-thumb', '#404655');
+    document.documentElement.style.setProperty('--scroll-thumb', '#ffffff');
 })
-
 executeCodeBtn.addEventListener('click', () => {
     editorLib.clearConsoleScreen();
     const userCode = codeEditor.getValue();
