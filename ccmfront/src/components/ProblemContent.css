@@ -8,7 +8,6 @@
     font-family: 'Consolas', sans-serif;
     font-size: 12pt;
     line-height: 1.5;
-    margin-right: 2px;
 }
 
 .problem::-webkit-scrollbar {
@@ -21,7 +20,7 @@
 }
 
 .problem::-webkit-scrollbar-thumb {
-  background-color: #ffffff;
+  background-color: var(--scroll-thumb);
   border-radius: 10px;
 }
 

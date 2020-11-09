@@ -35,7 +35,7 @@
 }
 
 .content-foot {
-    height: 70px;
+    height: 50px;
     width: 100%;
     border-top: var(--dist) solid 1px;
 }

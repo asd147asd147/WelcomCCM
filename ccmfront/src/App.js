@@ -5,18 +5,7 @@ import './components/PratitionBar.css';
 import ProblemContent from './components/ProblemContent';
 import PartitionBar from './components/PartitionBar';
 
-// class MainBlock extends Component {
-//   onMouse = (e) => {
-//     console.log("onMouse");
-//   }
-//   render() {
-//     return(
-//       <div className="mainBlock" onMouseOver={this.onMouse}>
-//         <div className="blockContent"></div>
-//       </div>
-//     );
-//   }
-// }
+
 class App extends Component{
   prob = {
     num:1,
@@ -33,6 +22,7 @@ class App extends Component{
       {id:3, input:'input data example3', output:'output data example3'}
     ]
   };
+
   render(){
     return (
       // <MainBlock cont="Challenge"></MainBlock>
