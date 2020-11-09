@@ -70,7 +70,6 @@ light_theme.addEventListener('click', () => {
     document.documentElement.style.setProperty('--editor-gutter-border', '#aaff83');
     document.documentElement.style.setProperty('--scroll-thumb', '#ffffff');
 })
-
 executeCodeBtn.addEventListener('click', () => {
     editorLib.clearConsoleScreen();
     const userCode = codeEditor.getValue();
