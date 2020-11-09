@@ -1,1 +1,1 @@
-{"time": 0, "output": "TimeOut!", "memory": 0, "error": "timeout"}
+{"time": 0.1645, "output": "I am tired..\r\n", "memory": 94208, "error": "noerror"}
