@@ -1,6 +1,7 @@
 .problem{
     height : 100%;
     width : 90%;
+    width : calc(100% - 10px);
     overflow-y: scroll;
     display : inline-block;
     padding: 20px;
