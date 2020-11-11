@@ -7,7 +7,6 @@ import psutil
 import languages as lan
 import FolderChecker as FC
 
-
 FC.checkdir(os.path.abspath('./'+sys.argv[3]+'/output'))
 input_count = 1
 com_language = dict()

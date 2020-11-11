@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 {"time": 0.0403, "output": "5 4 3 2 1 \r\n", "memory": "233.472KB", "error": "noerror", "answer": "X"}
 {"time": 0.036, "output": "10 9 8 7 6 \r\n", "memory": "294.912KB", "error": "noerror", "answer": "X"}
 {"time": 0.0401, "output": "15 14 13 12 11 \r\n", "memory": "290.816KB", "error": "noerror", "answer": "X"}
+=======
+{"time": 0.056, "output": "\uacb0\uacfc:[5, 4, 3, 2, 1]\r\n", "memory": "131.072KB", "error": "noerror"}
+{"time": 0.0562, "output": "\uacb0\uacfc:[10, 9, 8, 7, 6]\r\n", "memory": "319.488KB", "error": "noerror"}
+{"time": 0.0526, "output": "\uacb0\uacfc:[15, 14, 13, 12, 11]\r\n", "memory": "323.584KB", "error": "noerror"}
+>>>>>>> upstream/main
