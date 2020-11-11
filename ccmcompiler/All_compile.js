@@ -1,10 +1,10 @@
 var fs = require('fs');
 var process = require('child_process');
 
-var select = "python"
 // select c++, c ~~
-var time_out = 10
-exports.compile = function(callback){
+var time_out = 1
+
+exports.allcompile = function(select, callback) {
     if(select == "python"){
         process.execFile('./dist/compile_py',[select,time_out],function (err,stdout,stderr) {
             if(err) {
@@ -13,9 +13,9 @@ exports.compile = function(callback){
                         console.log(e);
                     }
                     else{
-                        console.log('02 WRITE DONE! 400');
-                        callback(400);
+                        console.log('02 WRITE DONE!');
                     }
+                    callback(400);
                 });
             } else {
                 fs.writeFile('./result/result.txt',stdout,'utf-8',function(e){
@@ -23,9 +23,9 @@ exports.compile = function(callback){
                         console.log(e);
                     }
                     else{
-                        console.log('02 WRITE DONE! 200');
-                        callback(200);
+                        console.log('02 WRITE DONE!');
                     }
+                    callback(200);
                 });
             }
         });
@@ -38,9 +38,9 @@ exports.compile = function(callback){
                         console.log(e);
                     }
                     else{
-                        console.log('02 WRITE DONE! 400');
-                        callback(400);
+                        console.log('02 WRITE DONE!');
                     }
+                    callback(400);
                 });
             } else {
                 fs.writeFile('./result/result.txt',stdout,'utf-8',function(e){
@@ -48,9 +48,9 @@ exports.compile = function(callback){
                         console.log(e);
                     }
                     else{
-                        console.log('02 WRITE DONE! 200');
-                        callback(200);
+                        console.log('02 WRITE DONE!');
                     }
+                    callback(200);
                 });
             }
         });

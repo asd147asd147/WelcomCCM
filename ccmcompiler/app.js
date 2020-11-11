@@ -1,11 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
-const compile = require('./compile_py');
-
+const allcompile = require('./All_compile');
 const app = express();
-
-
 
 app.use(cors());
 app.use(express.json());
@@ -20,18 +17,17 @@ app.post('/',function(req,res){
     console.log('CCM GET World Class');
     const code = JSON.parse(req.body.code);
     fs.writeFileSync("./data/user.py",code);
-    compile.compile((callback) =>{
+    allcompile.allcompile("python",(callback) =>{
         if(callback == 400){
             console.log(400);
         }
         else{
             console.log(200);
         }
-        const result = fs.readFileSync("./result/user.txt");
+        const result = fs.readFileSync("./result/result.txt");
         const result_string = result.toString();
-        // result_string.pop();
         console.log(result_string);
-        res.send({result: JSON.stringify(result_string)});
+        res.send(JSON.stringify(result_string));
     });
 });
 

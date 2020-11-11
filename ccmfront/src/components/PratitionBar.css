@@ -1,0 +1,8 @@
+.partition_bar{
+    cursor: e-resize;
+    height: 100%;
+    background-color: var(--main-bg);
+    width: 10px;
+    border-right: var(--dist) solid 1px;
+    display: inline-block;
+}

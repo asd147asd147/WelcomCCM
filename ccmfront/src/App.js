@@ -1,42 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-
-class Problem_Content extends Component {
-  RestrictionList = this.props.data.restric.map((v,i) => {<li key={v.cont}>{v.cont}</li>});
-  example = this.props.data.ioexam.map(v => {
-    <div>
-      
-    <h5>입출력 예시 {v.id}</h5>
-    <ul>
-      <li key={v.input}>{v.input}</li>
-      <li key={v.output}>{v.output}</li>
-    </ul>
-    </div>
-  });
-  
-  render() {
-    return (
-      <div className="problem">
-        <div className="problem-description">
-          <h3>{this.props.data.title}</h3>
-          <div className="problem-description-body">
-            <div className="problem-description-body-content">
-              <p>{this.props.data.desc}</p>
-            </div>
-            <div className="problem-description-body-restriction">
-              <h4>제한 사항</h4>
-              <ul>{this.RestrictionList}</ul>
-            </div>
-            <div className="problem-description-body-ioexam">
-              <h4>입출력 예시</h4>
-              <ul>{this.example}</ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+import './components/ProblemContent.css';
+import './components/PratitionBar.css';
+import ProblemContent from './components/ProblemContent';
+import PartitionBar from './components/PartitionBar';
 
 class App extends Component{
   prob = {
@@ -53,12 +20,17 @@ class App extends Component{
       {id:2, input:'input data example2', output:'output data example2'},
       {id:3, input:'input data example3', output:'output data example3'}
     ]
-  }
+  };
+
   render(){
-      return (
-        <Problem_Content data={this.prob}></Problem_Content>
-      );
-    }
+    return (
+      // <MainBlock cont="Challenge"></MainBlock>
+      <div className="inApp">
+        <ProblemContent data={this.prob}></ProblemContent>
+        <PartitionBar data={1}></PartitionBar>
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -1,0 +1,47 @@
+.problem{
+    height : 100%;
+    width : 90%;
+    width : calc(100% - 10px);
+    overflow-y: scroll;
+    display : inline-block;
+    padding: 20px;
+    border-right: var(--dist) solid 1px;
+    font-family: 'Consolas', sans-serif;
+    font-size: 12pt;
+    line-height: 1.5;
+}
+
+.problem::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.problem::-webkit-scrollbar:hover {
+  width: 6px;
+}
+
+.problem::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-thumb);
+  border-radius: 10px;
+}
+
+.problem-description-body-content {
+  width: 100%;
+  padding: 10px;
+  white-space: normal;
+}
+
+.problem-description-body-restriction {
+  width: 100%;
+  padding: 10px;
+  white-space: normal;
+}
+.problem-description-body-ioexam {
+  width: 100%;
+  padding: 10px;
+  white-space: normal;
+}
+
+ul {
+  padding-left: 20px;
+}

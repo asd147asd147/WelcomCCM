@@ -3,12 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['compile_c_cpp.py'],
-<<<<<<< HEAD
+a = Analysis(['test.py'],
              pathex=['C:\\Users\\USER\\Documents\\GitHub\\WelcomCCM\\ccmcompiler'],
-=======
-             pathex=['D:\\Won-June\\contest\\CCM\\pnu-swedu-ccm\\ccmcompiler'],
->>>>>>> upstream/main
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -27,7 +23,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='compile_c_cpp',
+          name='test',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
