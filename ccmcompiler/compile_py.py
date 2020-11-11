@@ -8,11 +8,11 @@ import languages as lan
 import sys
 import FolderChecker as FC
 
-#user name, 문제 number를 받아서 output폴더가 없으면 만들고, 있다면 안에 있는 .out 파일을 다 지우는 코드 추가하기
+
 FC.checkdir(os.path.abspath('./'+sys.argv[3]+'/output'))
 input_count = 1
 com_language = dict()
-result = {"time": 0, "output": "", "memory" : "0", "error" : "noerror"} 
+result = {"time": 0, "output": "", "memory" : "0", "error" : "noerror","answer" : "X"} 
 select = sys.argv[1]
 timeout_sec = float(sys.argv[2])
 
@@ -63,9 +63,19 @@ for file in input_arr:
         result['memory'] = str(Memoryuse/1000)+"KB"
     else:
         result['memory'] = str(Memoryuse/(1000**2))+"MB"
-    json_data = json.dumps(result)
-    print(json_data)
+    
     f.write(result['output'][:-1])
     f.close()
+
+    check =  subprocess.Popen(args ="python answer_check.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE)
+    (stdout,stderr) = check.communicate(input = str(input_count).encode("utf8"))
+
+    if(stdout.decode('utf8')[:-2] == "True"):
+        result["answer"]="O"
+    else:
+        result["answer"] = "X"
+
+    json_data = json.dumps(result)
+    print(json_data)
     input_count += 1
 

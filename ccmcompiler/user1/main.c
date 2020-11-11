@@ -10,6 +10,6 @@ int main(){
     for(i=0; i<5;i++){
         sum += a[i];
     }
-    printf("합은 : %d\n",sum);
+    printf("결과: %d\n",sum);
     return 0;
 }
