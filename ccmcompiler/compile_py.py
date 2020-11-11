@@ -6,42 +6,66 @@ import sys
 import psutil
 import languages as lan
 import sys
+import FolderChecker as FC
 
-
-
+#user name, 문제 number를 받아서 output폴더가 없으면 만들고, 있다면 안에 있는 .out 파일을 다 지우는 코드 추가하기
+FC.checkdir(os.path.abspath('./'+sys.argv[3]+'/output'))
+input_count = 1
 com_language = dict()
-result = {"time": 0, "output": "", "memory" : 0,"error" : "noerror"} 
+result = {"time": 0, "output": "", "memory" : "0", "error" : "noerror"} 
 select = sys.argv[1]
 timeout_sec = float(sys.argv[2])
 
-com_language = lan.language(select).compile_language
+input_arr= list()
+input_dir = os.listdir(os.path.abspath('./input'))
+for file in input_dir:
+    input_arr.append(os.path.abspath('./input/'+file))
+
+com_language = lan.language(select,sys.argv[3]).compile_language
 cmd_arr = com_language["compile"]["compile_cmd"]
-start_time = timer()
 
-try:
-    run = subprocess.Popen(args = cmd_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    p = psutil.Process(run.pid)
-    Memoryuse = p.memory_info()[0]
-    (stdout, stderr) = run.communicate(timeout = timeout_sec)
-except subprocess.TimeoutExpired:
+for file in input_arr:
+    f = open("./"+sys.argv[3]+"/output/"+str(input_count)+".out",'w',encoding='CP949')
+    in_proc = subprocess.run(args=["type",file],shell=True,capture_output=True,encoding='CP949')
+    start_time = timer()
+    try:
+        run = subprocess.Popen(args = cmd_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE)
+        p = psutil.Process(run.pid)
+        Memoryuse = p.memory_info()[0]
+        (stdout, stderr) = run.communicate(timeout = timeout_sec,input=in_proc.stdout.encode('CP949'))
+        if(Memoryuse >= com_language["compile"]["max_memory"]):
+            run.kill()
+            result["error"]= "Memory"
+            result["output"] = "Memory Overflow!!"
+            print(json.dumps(result))
+            continue
+
+    except subprocess.TimeoutExpired:
+        run.kill()
+        result["error"]= "timeout"
+        result["output"] = "TimeOut!"
+        print(json.dumps(result))
+        continue
+
+    end_time = timer()
     run.kill()
-    result["error"]= "timeout"
-    result["output"] = "TimeOut!"
-    print(json.dumps(result))
-    sys.exit(0)
+    real_time = round(end_time - start_time,4)
+    result['time'] = real_time
+    if(stdout.decode('CP949') == ""):
+        index = stderr.decode('CP949').find(',')
+        string = stderr.decode('CP949')[index+2:]
+        result['output'] = string
+        result["error"] = "code"
+    else:
+        result['output'] = stdout.decode('CP949')
 
-end_time = timer()
+    if(int(Memoryuse/(1000**2)) == 0):
+        result['memory'] = str(Memoryuse/1000)+"KB"
+    else:
+        result['memory'] = str(Memoryuse/(1000**2))+"MB"
+    json_data = json.dumps(result)
+    print(json_data)
+    f.write(result['output'][:-1])
+    f.close()
+    input_count += 1
 
-real_time = round(end_time - start_time,4)
-result['time'] = real_time
-if(stdout.decode('utf8') == ""):
-    index = stderr.decode('utf8').find(',')
-    string = stderr.decode('utf8')[index+2:]
-    result['output'] = string
-    result["error"] = "code"
-else:
-    result['output'] = stdout.decode('utf8')
-
-result['memory'] = Memoryuse
-json_data = json.dumps(result)
-print(json_data)
