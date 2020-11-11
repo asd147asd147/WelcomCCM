@@ -1,3 +1,3 @@
-{"time": 0.0213, "output": "15\r\n", "memory": "139.264KB", "error": "noerror"}
-{"time": 0.0203, "output": "40\r\n", "memory": "290.816KB", "error": "noerror"}
-{"time": 0.02, "output": "65\r\n", "memory": "294.912KB", "error": "noerror"}
+{"time": 0.0526, "output": "\uacb0\uacfc:[5, 4, 3, 2, 1]\r\n", "memory": "110.592KB", "error": "noerror"}
+{"time": 0.0561, "output": "\uacb0\uacfc:[10, 9, 8, 7, 6]\r\n", "memory": "323.584KB", "error": "noerror"}
+{"time": 0.0567, "output": "\uacb0\uacfc:[15, 14, 13, 12, 11]\r\n", "memory": "319.488KB", "error": "noerror"}

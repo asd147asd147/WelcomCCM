@@ -25,13 +25,13 @@ path = com_language["compile"]["src_path"]
 compile_arr = com_language["compile"]["compile_cmd"]
 
 for file in input_arr:
-    f = open("./"+sys.argv[3]+"/output/"+str(input_count)+".out",'w')
-    in_proc = subprocess.run(args=["type",file],shell=True,capture_output=True,encoding='CP949')
+    f = open("./"+sys.argv[3]+"/output/"+str(input_count)+".out",'w',encoding='UTF8')
+    in_proc = subprocess.run(args=["type",file],shell=True,capture_output=True,encoding='UTF8')
     cmd_compile = subprocess.Popen(compile_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     (stdout,stderr) = cmd_compile.communicate()
-    if(stderr.decode('CP949') !=""):
-        index = stderr.decode('CP949').find('error')
-        string = stderr.decode('CP949')[index:]
+    if(stderr.decode('UTF8') !=""):
+        index = stderr.decode('UTF8').find('error')
+        string = stderr.decode('UTF8')[index:]
         result['output'] = string
         json_data = json.dumps(result)
         result['error'] = "syntex error"
@@ -44,7 +44,7 @@ for file in input_arr:
             run = subprocess.Popen(args =run_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
             p = psutil.Process(run.pid)
             Memoryuse = p.memory_info()[0]
-            (stdout, stderr) = run.communicate(timeout = timeout_sec,input=in_proc.stdout.encode('CP949'))
+            (stdout, stderr) = run.communicate(timeout = timeout_sec,input=in_proc.stdout.encode('UTF8'))
             if(Memoryuse >= com_language["compile"]["max_memory"]):
                 run.kill()
                 result["error"]= "Memory"
@@ -63,13 +63,13 @@ for file in input_arr:
         real_time = round(end_time - start_time,4)
 
         result['time'] = real_time
-        if(stdout.decode('CP949') == ""):
-            index = stderr.decode('CP949').find(',')
-            string = stderr.decode('CP949')[index+2:]
+        if(stdout.decode('UTF8') == ""):
+            index = stderr.decode('UTF8').find(',')
+            string = stderr.decode('UTF8')[index+2:]
             result['output'] = string
             result['error'] = "run-time error"
         else:
-            result['output'] = stdout.decode('CP949')
+            result['output'] = stdout.decode('UTF8')
 
         if(int(Memoryuse/(1000**2)) == 0):
             result['memory'] = str(Memoryuse/1000)+"KB"

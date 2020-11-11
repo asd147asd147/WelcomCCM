@@ -1,7 +1,7 @@
 var fs = require('fs');
 var process = require('child_process');
 
-var select = "c"
+var select = "python"
 // select c++, c ~~
 var time_out = 10
 var user = "user1"

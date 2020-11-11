@@ -25,7 +25,7 @@ com_language = lan.language(select,sys.argv[3]).compile_language
 cmd_arr = com_language["compile"]["compile_cmd"]
 
 for file in input_arr:
-    f = open("./"+sys.argv[3]+"/output/"+str(input_count)+".out",'w')
+    f = open("./"+sys.argv[3]+"/output/"+str(input_count)+".out",'w',encoding='CP949')
     in_proc = subprocess.run(args=["type",file],shell=True,capture_output=True,encoding='CP949')
     start_time = timer()
     try:
