@@ -1,1 +1,3 @@
-{"time": 0.0832, "output": "['5', '4', '3', '2', '1']\r\n", "memory": 196608, "error": "noerror"}
+{"time": 0.0642, "output": "[5, 4, 3, 2, 1]\r\n", "memory": "245.76KB", "error": "noerror"}
+{"time": 0.0722, "output": "[10, 9, 8, 7, 6]\r\n", "memory": "323.584KB", "error": "noerror"}
+{"time": 0.0678, "output": "[15, 14, 13, 12, 11]\r\n", "memory": "319.488KB", "error": "noerror"}

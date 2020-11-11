@@ -1,7 +1,14 @@
 #include<stdio.h>
 int main(){
     int i;
-    for(i=0;i<1000000;i++){}
-    printf("Hello C\n");
+    int a[5] = {0,};
+    for(i=0; i<5;i++){
+        scanf("%d ", &a[i]);
+    }
+
+    for(i=0; i<5;i++){
+        printf("%d ", a[i]);
+    }
+    printf("\n");
     return 0;
 }

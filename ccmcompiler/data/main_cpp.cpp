@@ -2,7 +2,13 @@
 using namespace std;
 
 int main(){
-    for(int i=0; i< 1000000; i++){}
-    cout<<"class wonjun_is_another()"<<endl;
+    int a[5] = {0,};
+    for(int i=0; i<5;i++){
+        cin >> a[i];
+    }
+    for(int i=0; i<5;i++){
+        cout << a[i] << " ";
+    }
+    cout<<endl;
     return 0;
 }
