@@ -1,2 +1,0 @@
-C:\ProgramData\Anaconda3\python.exe: Error while finding module specification for 'C:\\Users\\USER\\Documents\\GitHub\\WelcomCCM\\ccmcompiler\\data\\user.py' (ModuleNotFoundError: No module named 'C:\\Users\\USER\\Documents\\GitHub\\WelcomCCM\\ccmcompiler\\data\\user')
-

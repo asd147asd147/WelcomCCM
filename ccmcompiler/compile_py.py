@@ -6,7 +6,11 @@ import sys
 import psutil
 import languages as lan
 import sys
+import FolderChecker as FC
 
+#user name, 문제 number를 받아서 output폴더가 없으면 만들고, 있다면 안에 있는 .out 파일을 다 지우는 코드 추가하기
+FC.checkdir(os.path.abspath('./'+sys.argv[3]+'/output'))
+input_count = 1
 com_language = dict()
 result = {"time": 0, "output": "", "memory" : "0", "error" : "noerror"} 
 select = sys.argv[1]
@@ -17,10 +21,11 @@ input_dir = os.listdir(os.path.abspath('./input'))
 for file in input_dir:
     input_arr.append(os.path.abspath('./input/'+file))
 
-com_language = lan.language(select).compile_language
+com_language = lan.language(select,sys.argv[3]).compile_language
 cmd_arr = com_language["compile"]["compile_cmd"]
 
 for file in input_arr:
+    f = open("./"+sys.argv[3]+"/output/"+str(input_count)+".out",'w')
     in_proc = subprocess.run(args=["type",file],shell=True,capture_output=True,encoding='CP949')
     start_time = timer()
     try:
@@ -60,4 +65,7 @@ for file in input_arr:
         result['memory'] = str(Memoryuse/(1000**2))+"MB"
     json_data = json.dumps(result)
     print(json_data)
+    f.write(result['output'][:-1])
+    f.close()
+    input_count += 1
 

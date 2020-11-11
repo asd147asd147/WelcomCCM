@@ -8,12 +8,13 @@ import languages as lan
 import FolderChecker as FC
 
 #user name, 문제 number를 받아서 output폴더가 없으면 만들고, 있다면 안에 있는 .out 파일을 다 지우는 코드 추가하기
+FC.checkdir(os.path.abspath('./'+sys.argv[3]+'/output'))
 input_count = 1
 com_language = dict()
 result = {"time": 0, "output": "", "memory" : "0","error" : "noerror"} 
 select = sys.argv[1]
 timeout_sec = float(sys.argv[2])
-com_language = lan.language(select).compile_language
+com_language = lan.language(select,sys.argv[3]).compile_language
 
 input_arr= list()
 input_dir = os.listdir(os.path.abspath('./input'))
@@ -24,7 +25,7 @@ path = com_language["compile"]["src_path"]
 compile_arr = com_language["compile"]["compile_cmd"]
 
 for file in input_arr:
-    # f = open(str(input_count)+".out",w)
+    f = open("./"+sys.argv[3]+"/output/"+str(input_count)+".out",'w')
     in_proc = subprocess.run(args=["type",file],shell=True,capture_output=True,encoding='CP949')
     cmd_compile = subprocess.Popen(compile_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     (stdout,stderr) = cmd_compile.communicate()
@@ -33,7 +34,7 @@ for file in input_arr:
         string = stderr.decode('CP949')[index:]
         result['output'] = string
         json_data = json.dumps(result)
-        result['error'] = "code"
+        result['error'] = "syntex error"
         print(json.dumps(result))
 
     else:
@@ -66,7 +67,7 @@ for file in input_arr:
             index = stderr.decode('CP949').find(',')
             string = stderr.decode('CP949')[index+2:]
             result['output'] = string
-            result['error'] = "code"
+            result['error'] = "run-time error"
         else:
             result['output'] = stdout.decode('CP949')
 
@@ -77,4 +78,6 @@ for file in input_arr:
 
         json_data = json.dumps(result)
         print(json_data)
-        #f.write(result['output'][:-1])
+        f.write(result['output'][:-1])
+    f.close()
+    input_count += 1
