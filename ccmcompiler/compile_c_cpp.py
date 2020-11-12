@@ -11,7 +11,6 @@ result = {"time": 0, "output": "", "memory" : "0","error" : "noerror"}
 select = sys.argv[1]
 timeout_sec = float(sys.argv[2])
 com_language = lan.language(select).compile_language
-
 path = com_language["compile"]["src_path"]
 compile_arr = com_language["compile"]["compile_cmd"]
 
