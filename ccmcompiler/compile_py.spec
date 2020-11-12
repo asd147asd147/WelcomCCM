@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['compile_py.py'],
-             pathex=['C:\\Users\\USER\\Documents\\GitHub\\WelcomCCM\\ccmcompiler'],
+             pathex=['D:\\Won-June\\contest\\CCM\\pnu-swedu-ccm\\ccmcompiler'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -19,19 +19,15 @@ pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
           [],
-          exclude_binaries=True,
           name='compile_py',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
+          upx_exclude=[],
+          runtime_tmpdir=None,
           console=True )
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               strip=False,
-               upx=True,
-               upx_exclude=[],
-               name='compile_py')

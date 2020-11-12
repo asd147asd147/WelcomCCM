@@ -134,7 +134,7 @@ executeCodeBtn.addEventListener('click', () => {
     const jsonfile = JSON.stringify(userdata);
     // console.log(jsonfile);
     try {
-        fetch('http://choiwonjune.iptime.org:3001/', {
+        fetch('http://choiwonjune.iptime.org:3001/problem', {
             method: 'POST',
             body: JSON.stringify({data: `${ jsonfile }`}),
             headers:{
@@ -144,9 +144,11 @@ executeCodeBtn.addEventListener('click', () => {
             .then(res => res.json())
             .then(res => {
                 const json_data = JSON.parse(res);
+                // console.log(res)
                 const output = json_data.output.split('\n');
                 const time = json_data.time;
                 const memory = json_data.memory;
+                const answer = json_data.answer;
                 output.pop();
                 // console.log(output);
                 output.forEach(res_log =>{
@@ -154,6 +156,7 @@ executeCodeBtn.addEventListener('click', () => {
                 })
                 console.log("Time: " + time);
                 console.log("Memory: " + memory);
+                console.log("Answer: " + answer)
                 // console.log(JSON.parse(res.result));
                 editorLib.printToConsole();
             }).catch (function(){

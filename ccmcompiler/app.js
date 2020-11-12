@@ -13,7 +13,7 @@ app.get('/',function(req,res){
     res.send(JSON.stringify('CCM GET World Class'));
 });
 
-app.post('/',function(req,res){
+app.post('/problem',function(req,res){
     // console.log(req.body);
     console.log('CCM GET World Class');
     const data = JSON.parse(req.body.data);
@@ -29,7 +29,7 @@ app.post('/',function(req,res){
         const result = fs.readFileSync("./user1/result.txt");
         const result_string = result.toString();
         console.log(result_string);
-        res.send(JSON.stringify(result_string));
+        res.json(JSON.stringify(result_string));
     });
 });
 
