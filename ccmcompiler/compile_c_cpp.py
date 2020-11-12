@@ -77,7 +77,7 @@ for file in input_arr:
         else:
             result['memory'] = str(Memoryuse/(1000**2))+"MB"
 
-        f.write(result['output'][:-1])
+        f.write(result['output'].rstrip())
         f.close()
         check =  subprocess.Popen(args ="python answer_check.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE)
         (stdout,stderr) = check.communicate(input = str(input_count).encode("utf8"))

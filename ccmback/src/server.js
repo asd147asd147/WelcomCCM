@@ -72,8 +72,6 @@ app.get('/problem/', function(req, res){
 		.catch(err => {
 			console.log(err);
 		});
-	// console.log(JSON.stringify(rows))
-	// console.log(JSON.parse(JSON.stringify(rows)))
 });
 
 

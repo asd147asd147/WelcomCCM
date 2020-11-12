@@ -38,32 +38,35 @@ class ProblemList extends Component {
         currentPage: 1,
         startIndex: 0
     };
+
+
     pagedProblems = [];
+
     handlePageChange = (page) => {
-        this.setState(() => {
-            return {
-              currentPage: page,
-              startIndex: (this.state.currentPage-1)*this.state.pageSize
-            }
+        this.setState({
+            currentPage: page,
+            startIndex: (page - 1)*this.state.pageSize,
         });
-        // console.log(this.state.currentPage);
-        // console.log(this.state.startIndex);
     }
-    pagedProblems = _.slice(this.Problem, this.state.startIndex, this.state.startIndex+10);
-    list = this.pagedProblems.map((v)=>{
-        // list = this.props.data.map((v)=>{
-        return(
-            <tr key={"ProblemTr"+v.num}>
-                <td key={"ProblemNum"+v.num}>{v.num}</td>
-                <td key={"ProblemTitle"+v.num}><a onClick={(e) => {console.log("clicked "+v.num)}}>{v.title}</a></td>
-                <td key={"ProblemLevel"+v.num}>{v.level}</td>
-                <td key={"ProblemCategory"+v.num}>{v.category}</td>
-                <td key={"ProblemAuth"+v.num}>{v.writer}</td>
-                <td key={"ProblemSuc"+v.num}>{v.success}</td>
-            </tr>
-        )
-    })
+
+    makeTable = () => {
+        this.pagedProblems = _.slice(this.Problem, this.state.startIndex, this.state.startIndex + 10);
+        this.list = this.pagedProblems.map((v)=>{
+            return(
+                <tr key={"ProblemTr"+v.num}>
+                    <td key={"ProblemNum"+v.num}>{v.num}</td>
+                    <td key={"ProblemTitle"+v.num}><a onClick={(e) => {console.log("clicked "+v.num)}}>{v.title}</a></td>
+                    <td key={"ProblemLevel"+v.num}>{v.level}</td>
+                    <td key={"ProblemCategory"+v.num}>{v.category}</td>
+                    <td key={"ProblemAuth"+v.num}>{v.writer}</td>
+                    <td key={"ProblemSuc"+v.num}>{v.success}</td>
+                </tr>
+            )
+        })
+    }
+
     render() {
+        this.makeTable()
         return (
             <div>
                 <Table striped hover variant="light">
