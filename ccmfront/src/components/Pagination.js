@@ -11,7 +11,6 @@ class Pagination extends Component {
     
     pageCount = Math.ceil(this.state.ItemsCount / this.state.PageSize);
     pages = _.range(1, this.pageCount+1);
-
     render() {
         return (
             <nav> {/* VSCode 입력: nav>ul.pagination>li.page-item>a.page-link */}

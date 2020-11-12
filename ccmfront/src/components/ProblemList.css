@@ -17,3 +17,8 @@ tr {
 .cursor-pointer {
     cursor: pointer;
 }
+ul {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
