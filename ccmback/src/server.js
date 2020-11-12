@@ -44,34 +44,37 @@ app.use(function (err, req, res, next) {
   res.status(500).json({ code: 500, data: { msg: "Internal Server Error", err: err }});
 });
 
+const { Client } = require('pg');
 
-// const { Client } = require('pg');
+const client = new Client({
+	user : 'postgres',
+	host : 'localhost',
+	database : 'ccm',
+	password : 'postgres',
+	port : 5432,
+});
 
-// const client = new Client({
-// 	user : 'postgres',
-// 	host : 'localhost',
-// 	database : 'ccm',
-// 	password : 'postgres',
-// 	port : 5432,
-// });
 
-// client.connect();
+client.connect();
+app.get('/problem/', function(req, res){
+	const query = 'SELECT * FROM public.issues WHERE num = '+req.query.num+';';
+	// console.log(query)
+	
+	client.query(query)
+		.then(que => {
+			const rows = que.rows;
+			// rows.map(row => {
+			// 	console.log(`Read: ${JSON.stringify(row)}`);
+			// });
+			res.send(JSON.stringify(rows));
+			// client.end();
+		})
+		.catch(err => {
+			console.log(err);
+		});
+	// console.log(JSON.stringify(rows))
+	// console.log(JSON.parse(JSON.stringify(rows)))
+});
 
-// const query = 'SELECT * FROM public.user;';
 
-// client.query(query)
-// 	.then(res => {
-// 		const rows = res.rows;
-// 		rows.map(row => {
-// 			console.log(`Read: ${JSON.stringify(row)}`);
-// 		});
-// 		app.get('/', function(req, res){
-// 			res.send(rows);
-// 		});
-// 		client.end();
-		
-// 	})
-// 	.catch(err => {
-// 		console.log(err);
-// 	});
 module.exports = app;

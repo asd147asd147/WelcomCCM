@@ -1,0 +1,27 @@
+:root{
+    --editor-bg: #eee;
+    --editor-border: #3f87a6;
+    --editor-gutter-border: #7aecb3;
+    --main-bg: #2e3440;
+    --main-col: #d8dee9;
+    --text-col: #d8dee9;
+    --dist: #232831;
+    --option-col: #37485d;
+    --scroll-thumb: #404655;
+}
+
+html, body, #root{
+    height: 100%;
+    width: 100%;
+}
+
+#root {
+    /* background-color: var(--main-bg); */
+    background-color: rgba(0,0,0,.05);
+    align-content: center;
+}
+
+.loginblck {
+    height: fit-content;
+    width: fit-content;
+}

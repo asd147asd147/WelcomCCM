@@ -1,0 +1,16 @@
+.tableDiv {
+    width: 70%;
+    height: fit-content;
+    position: absolute;
+    margin-left: 15%;
+}
+table {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+th {
+    font-weight: bold;
+}
+tr {
+    font-size: 11px;
+}

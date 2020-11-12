@@ -1,6 +1,5 @@
 .problem{
     height : 100%;
-    width : 90%;
     width : calc(100% - 10px);
     overflow-y: scroll;
     display : inline-block;
@@ -28,18 +27,18 @@
 .problem-description-body-content {
   width: 100%;
   padding: 10px;
-  white-space: normal;
+  white-space: nowrap;
 }
 
 .problem-description-body-restriction {
   width: 100%;
   padding: 10px;
-  white-space: normal;
+  white-space: nowrap;
 }
 .problem-description-body-ioexam {
   width: 100%;
   padding: 10px;
-  white-space: normal;
+  white-space: nowrap;
 }
 
 ul {

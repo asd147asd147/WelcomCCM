@@ -1,0 +1,33 @@
+.btn-success {
+    color: white;
+    background-color: var(--option-col) !important;
+    border: unset !important;
+    border-color: unset !important;
+    box-shadow: unset !important;
+    font-size: 12pt !important;
+    font-weight: 600 !important;
+    padding: 0.25rem 0.6rem !important;
+    margin-left: 10px;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 600;
+    color: var(--option-col) !important;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: unset !important;
+}
+
+.dropdown-item:hover{
+    color: #007bff !important;
+}

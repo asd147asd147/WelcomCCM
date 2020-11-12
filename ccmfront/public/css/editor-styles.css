@@ -52,10 +52,14 @@ html, body{
 }
 
 .editor__footer{
-    height: 30%;
+    height: calc(30%-2px);
     /* display: flex; */
     flex-direction: column;
     background-color: var(--main-bg);
+}
+
+#bar {
+    height: 2px;
 }
 
 .editor__footer--top{
