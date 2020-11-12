@@ -134,7 +134,7 @@ executeCodeBtn.addEventListener('click', () => {
     const jsonfile = JSON.stringify(userdata);
     // console.log(jsonfile);
     try {
-        fetch('http://choiwonjune.iptime.org:3001/', {
+        fetch('localhost:3001/', {
             method: 'POST',
             body: JSON.stringify({data: `${ jsonfile }`}),
             headers:{
