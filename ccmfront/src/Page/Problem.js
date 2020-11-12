@@ -22,7 +22,7 @@ class Problem extends Component{
   }
   
   _readIssues = async() => {
-    const res = await (await axios.get('http://localhost:5000/problem/',
+    const res = await (await axios.get('http://choiwonjune.iptime.org:5000/problem/',
     {
       params: {
         num: 3
