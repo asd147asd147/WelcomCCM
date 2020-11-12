@@ -7,8 +7,7 @@ import PartitionBar from '../components/PartitionBar';
 import SettingLanguage from '../components/SettingLanguage';
 import axios from 'axios';
 
-class Problem extends Component{
-  
+class Problem extends Component{  
   state = {
     num: 0,
     title: '',
@@ -19,22 +18,44 @@ class Problem extends Component{
   
   componentDidMount() {
     this._readIssues()
+    this.addScript()
   }
-  
+  componentWillUnmount(){
+    window.location.reload();
+  }
+  addScript = () =>{
+    const script1 = document.createElement("script");
+    script1.src = "./js/editor.js";
+    script1.async = true;
+    const script2 = document.createElement("script");
+    script2.src = "./js/editor-console.js";
+    script2.async = true;
+    
+    document.body.appendChild(script1);
+    document.body.appendChild(script2);
+  }
+
   _readIssues = async() => {
+    var num = 0
+    if(window.location.href.lastIndexOf('&') !== -1){
+      num = window.location.href.substr(window.location.href.lastIndexOf('num') + 4, window.location.href.lastIndexOf('&')-(window.location.href.lastIndexOf('num') + 4));
+    }
+    else{
+      num = window.location.href.substr(window.location.href.lastIndexOf('num') + 4, );
+    }
     const res = await (await axios.get('http://choiwonjune.iptime.org:5000/problem/',
     {
       params: {
-        num: 3
+        num: num
       }
     })).data[0];
     let rest_data = []
     res.restric.map(restric => {
-      rest_data.push(JSON.parse(restric))
+      return(rest_data.push(JSON.parse(restric)))
     })
     let io_data = []
     res.ioexam.map(ioexam => {
-      io_data.push(JSON.parse(ioexam))
+      return(io_data.push(JSON.parse(ioexam)))
     })
     
     this.setState({

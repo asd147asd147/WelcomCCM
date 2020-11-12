@@ -7,12 +7,17 @@
 table {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
+    border-collapse: separate;
+    border-spacing: 0 0.5rem;
 }
 th {
     font-weight: bold;
 }
 tr {
     font-size: 15px;
+}
+.table-striped tbody tr:nth-of-type(odd){
+    background-color: rgba(0,0,0,0.1);
 }
 .cursor-pointer {
     cursor: pointer;

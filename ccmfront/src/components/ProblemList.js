@@ -2,35 +2,26 @@ import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import Pagination from './Pagination';
 import _ from 'lodash';
+import axios from 'axios';
 
 class ProblemList extends Component {
-    Problem = [
-        {num:1, title: "문제 이름입니당.", level : 5, category: "a", writer: "Hyunju an", success: 50},
-        {num:2, title: "문제 이름입니다.", level : 4, category: "b", writer: "Hyunju an", success: 50},
-        {num:3, title: "문제이름입니당.", level : 3, category: "c", writer: "Hyunju an", success: 50},
-        {num:4, title: "문제이름임", level : 2, category: "d", writer: "Hyunju an", success: 50},
-        {num:5, title: "문제 이름일까 아닐까", level : 1, category: "e", writer: "Hyunju an", success: 50},
-        {num:6, title: "문제 이름입니당.", level : 5, category: "a", writer: "Hyunju an", success: 50},
-        {num:7, title: "문제 이름입니다.", level : 4, category: "b", writer: "Hyunju an", success: 50},
-        {num:8, title: "문제이름입니당.", level : 3, category: "c", writer: "Hyunju an", success: 50},
-        {num:9, title: "문제이름임", level : 2, category: "d", writer: "Hyunju an", success: 50},
-        {num:10, title: "문제 이름일까 아닐까", level : 1, category: "e", writer: "Hyunju an", success: 50},
-        {num:11, title: "문제 이름입니당.", level : 5, category: "a", writer: "Hyunju an", success: 50},
-        {num:12, title: "문제 이름입니다.", level : 4, category: "b", writer: "Hyunju an", success: 50},
-        {num:13, title: "문제이름입니당.", level : 3, category: "c", writer: "Hyunju an", success: 50},
-        {num:14, title: "문제이름임", level : 2, category: "d", writer: "Hyunju an", success: 50},
-        {num:15, title: "문제 이름일까 아닐까", level : 1, category: "e", writer: "Hyunju an", success: 50},
-        {num:16, title: "문제 이름입니당.", level : 5, category: "a", writer: "Hyunju an", success: 50},
-        {num:17, title: "문제 이름입니다.", level : 4, category: "b", writer: "Hyunju an", success: 50},
-        {num:18, title: "문제이름입니당.", level : 3, category: "c", writer: "Hyunju an", success: 50},
-        {num:19, title: "문제이름임", level : 2, category: "d", writer: "Hyunju an", success: 50},
-        {num:20, title: "문제 이름일까 아닐까", level : 1, category: "e", writer: "Hyunju an", success: 50},
-        {num:21, title: "문제 이름입니당.", level : 5, category: "a", writer: "Hyunju an", success: 50},
-        {num:22, title: "문제 이름입니다.", level : 4, category: "b", writer: "Hyunju an", success: 50},
-        {num:23, title: "문제이름입니당.", level : 3, category: "c", writer: "Hyunju an", success: 50},
-        {num:24, title: "문제이름임", level : 2, category: "d", writer: "Hyunju an", success: 50},
-        {num:25, title: "문제 이름일까 아닐까", level : 1, category: "e", writer: "Hyunju an", success: 50}
-    ];
+    Problem = [];
+
+    componentDidMount() {
+        this._readList()
+        
+    }
+
+    _readList = async() => {
+        const res = await (await axios.get('http://choiwonjune.iptime.org:5000/problemlist/'));
+        let plist = []
+        res.data.map(d => {
+            return(plist.push(d))
+        })
+        this.Problem = plist.reverse()
+        this.setState({data: this.Problem})
+    }
+
     state = {
         data: this.Problem,
         pageSize: 10,
@@ -38,7 +29,7 @@ class ProblemList extends Component {
         currentPage: 1,
         startIndex: 0
     };
-
+    
 
     pagedProblems = [];
 
@@ -49,17 +40,24 @@ class ProblemList extends Component {
         });
     }
 
+    solving = (num) =>{
+        this.props.proper.history.push({
+            pathname: '/problem',
+            search: '?num='+num
+        })
+    }
+
     makeTable = () => {
         this.pagedProblems = _.slice(this.Problem, this.state.startIndex, this.state.startIndex + 10);
         this.list = this.pagedProblems.map((v)=>{
             return(
-                <tr key={"ProblemTr"+v.num} onClick={() => {console.log("clicked")}} className="cursor-pointer">
+                <tr key={"ProblemTr"+v.num} onClick={(e) => this.solving(v.num,e)} className="cursor-pointer">
                     <td key={"ProblemNum"+v.num}>{v.num}</td>
-                    <td key={"ProblemTitle"+v.num}><a onClick={() => {console.log("clicked "+v.num)}}>{v.title}</a></td>
+                    <td key={"ProblemTitle"+v.num}>{v.title}</td>
                     <td key={"ProblemLevel"+v.num}>{v.level}</td>
                     <td key={"ProblemCategory"+v.num}>{v.category}</td>
                     <td key={"ProblemAuth"+v.num}>{v.writer}</td>
-                    <td key={"ProblemSuc"+v.num}>{v.success}</td>
+                    <td key={"ProblemSuc"+v.num}>{v.accuracy}</td>
                 </tr>
             )
         })
@@ -84,12 +82,7 @@ class ProblemList extends Component {
                         {this.list}
                     </tbody>
                 </Table>
-                <Pagination 
-                    itemsCount={this.Problem.length} 
-                    pageSize={this.state.pageSize} 
-                    currentPage={this.state.currentPage}
-                    onPageChange={this.handlePageChange}
-                ></Pagination>
+                {Pagination(this.Problem.length,this.state.pageSize,this.state.currentPage,this.handlePageChange)}
             </div>
         )
     }
