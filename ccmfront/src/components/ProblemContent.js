@@ -1,22 +1,17 @@
 import React, { Component } from 'react'
+import RestrictionList from './RestrictionList'
+import Example from './Example'
 
 class ProblemContent extends Component {
-  RestrictionList = this.props.data.restric.map(v => {
-    return (
-      <li key={'restric_'+v.id}>{v.cont}</li>
-    );
-  });
-  Example = this.props.data.ioexam.map(v => {
-    return (
-      <div className="ex_div" key={'ex_div'+v.id}>
-        <h5>입출력 예시 {v.id}</h5>
-        <ul>
-          <li key={'input_'+v.id}>{v.input}</li>
-          <li key={'output_'+v.id}>{v.output}</li>
-        </ul> 
-      </div>
-    );
-  });
+  
+  componentDidMount(){
+    window.addEventListener("resize",this.updateDimensions);
+  }
+  
+  updateDimensions(){
+    document.querySelector("#root").style.width = parseInt(window.innerWidth)-parseInt(document.querySelector(".editor").offsetWidth)+"px";
+  }
+
   render() {
     return (
       <div className="problem">
@@ -28,11 +23,11 @@ class ProblemContent extends Component {
             </div>
             <div className="problem-description-body-restriction">
               <h4>제한 사항</h4>
-              <ul>{this.RestrictionList}</ul>
+              <ul>{RestrictionList(this.props.data)}</ul>
             </div>
             <div className="problem-description-body-ioexam">
               <h4>입출력 예시</h4>
-              <ul>{this.Example}</ul>
+              <ul>{Example(this.props.data)}</ul>
             </div>
           </div>
         </div>

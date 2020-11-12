@@ -4,12 +4,41 @@ const resetCodeBtn = document.querySelector('.editor__reset');
 const dark_theme = document.querySelector('#theme__dark');
 const light_theme = document.querySelector('#theme__light');
 
+var lang = window.location.href.substr(window.location.href.lastIndexOf('=') + 1);
+
+let defaultCode = '';
+let mode = ''
+let compiler_mode = ''
+let theme = sessionStorage.getItem("theme");;
+
+switch(lang){
+    case 'python3':
+        defaultCode = 'print("Hello World!")';
+        mode = 'python';
+        compiler_mode = 'python'
+        break;
+    case 'c':
+        defaultCode = '#include <stdio.h>\n\nint main(){\n\tprintf("Hello World!\\n");\n\treturn 0;\n}';
+        mode = 'c_cpp';
+        compiler_mode = 'c'
+        break;
+    case 'cpp':
+        defaultCode = '#include <iostream>\n\nusing namespace std;\n\nint main(){\n\tcout << "Hello World!" << endl;\n\treturn 0;\n}';
+        mode = 'c_cpp';
+        compiler_mode = 'cpp'
+        break;
+    default:
+        defaultCode = 'print("Hello World!")';
+        mode = 'python';
+        compiler_mode = 'python'
+        break;
+}
+
 let codeEditor = ace.edit("editorCode",{
-    mode : "ace/mode/python",
+    mode : "ace/mode/"+mode,
     selectionStyle: "text",
 });
 
-let defaultCode = 'print("Hello World!")';
 let consoleMessages = [];
 
 let  editorLib = {
@@ -35,11 +64,19 @@ let  editorLib = {
         })
     },
     init(){
+        switch(theme){
+            case "dark":
+                dark_set();
+                break;
+            case "light":
+                light_set();
+                break;
+            default:
+                dark_set();
+                break;
+        }
 
-        codeEditor.setTheme("ace/theme/nord_dark");
-        codeEditor.session.setMode("ace/mode/python");
-        codeEditor.session.setUseWrapMode(true);
-
+        // codeEditor.session.setUseWrapMode(true);
 
         codeEditor.setOptions({
             fontFamily: 'Inconsolata',
@@ -53,31 +90,53 @@ let  editorLib = {
     }
 }
 
-dark_theme.addEventListener('click', () => {
+function dark_set(){
+    sessionStorage.removeItem("theme");
+    sessionStorage.setItem("theme", "dark");
     codeEditor.setTheme("ace/theme/dracula");
+    document.getElementById('theme__dark').setAttribute('checked',true);
     document.documentElement.style.setProperty('--main-bg', '#2e3440');
     document.documentElement.style.setProperty('--text-col', '#d8dee9');
     document.documentElement.style.setProperty('--dist', '#232831');
     document.documentElement.style.setProperty('--editor-gutter-border', '#7aecb3');
     document.documentElement.style.setProperty('--scroll-thumb', '#404655');
-})
+}
 
-light_theme.addEventListener('click', () => {
+function light_set(){
+    sessionStorage.removeItem("theme");
+    sessionStorage.setItem("theme", "light");
     codeEditor.setTheme("ace/theme/crimson_editor");
+    document.getElementById('theme__light').setAttribute('checked',true);
     document.documentElement.style.setProperty('--main-bg', '#dddddd');
     document.documentElement.style.setProperty('--text-col', '#3d3d3d');
     document.documentElement.style.setProperty('--dist', '#bbbbbb');
     document.documentElement.style.setProperty('--editor-gutter-border', '#aaff83');
     document.documentElement.style.setProperty('--scroll-thumb', '#ffffff');
+}
+
+dark_theme.addEventListener('click', () => {
+    dark_set();
 })
+
+
+light_theme.addEventListener('click', () => {
+    sessionStorage.setItem("theme", "light");
+    light_set();
+})
+
 executeCodeBtn.addEventListener('click', () => {
     editorLib.clearConsoleScreen();
     const userCode = codeEditor.getValue();
-    const jsonfile = JSON.stringify(userCode);
+    const userdata = {
+        lang: compiler_mode,
+        code: userCode
+    }
+    const jsonfile = JSON.stringify(userdata);
+    // console.log(jsonfile);
     try {
         fetch('http://choiwonjune.iptime.org:3001/', {
             method: 'POST',
-            body: JSON.stringify({code: `${ jsonfile }`}),
+            body: JSON.stringify({data: `${ jsonfile }`}),
             headers:{
                 'Content-Type': 'application/json'
             }
@@ -94,7 +153,7 @@ executeCodeBtn.addEventListener('click', () => {
                     console.log(res_log);
                 })
                 console.log("Time: " + time);
-                console.log("Memory: " + memory/1024 + "KB");
+                console.log("Memory: " + memory);
                 // console.log(JSON.parse(res.result));
                 editorLib.printToConsole();
             }).catch (function(){

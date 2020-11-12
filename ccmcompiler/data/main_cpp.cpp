@@ -1,8 +1,17 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
+
 using namespace std;
 
+vector<int> v;
+
 int main(){
-    for(int i=0; i< 1000000; i++){}
-    cout<<"class wonjun_is_another()"<<endl;
-    return 0;
+	for(int i = 0; i < 10; i++)
+	    v.push_back(i);
+	
+	for(auto s : v){
+	    cout << s << endl;
+	}
+	
+	return 0;
 }
