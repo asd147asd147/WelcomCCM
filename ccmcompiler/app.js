@@ -3,6 +3,7 @@ const cors = require('cors');
 const fs = require('fs');
 const allcompile = require('./All_compile');
 const app = express();
+const filemaker = require('./file_maker');
 
 app.use(cors());
 app.use(express.json());
@@ -15,16 +16,17 @@ app.get('/',function(req,res){
 app.post('/',function(req,res){
     // console.log(req.body);
     console.log('CCM GET World Class');
-    const code = JSON.parse(req.body.code);
-    fs.writeFileSync("./data/user.py",code);
-    allcompile.allcompile("python",(callback) =>{
+    const data = JSON.parse(req.body.data);
+    // console.log(data);
+    filemaker.filemaker(data.lang,data.code);
+    allcompile.allcompile(data.lang,(callback) =>{
         if(callback == 400){
             console.log(400);
         }
         else{
             console.log(200);
         }
-        const result = fs.readFileSync("./result/result.txt");
+        const result = fs.readFileSync("./user1/result.txt");
         const result_string = result.toString();
         console.log(result_string);
         res.send(JSON.stringify(result_string));
