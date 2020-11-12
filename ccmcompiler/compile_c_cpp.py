@@ -10,6 +10,7 @@ import FolderChecker as FC
 FC.checkdir(os.path.abspath('./'+sys.argv[3]+'/output'))
 input_count = 1
 com_language = dict()
+result_list = list()
 result = {"time": 0, "output": "", "memory" : "0","error" : "noerror",'answer' : 'X'} 
 select = sys.argv[1]
 timeout_sec = float(sys.argv[2])
@@ -48,14 +49,14 @@ for file in input_arr:
                 run.kill()
                 result["error"]= "Memory"
                 result["output"] = "Memory Overflow!!"
-                print(json.dumps(result))
+                result_list.append(result)
                 input_count += 1
                 continue
         except subprocess.TimeoutExpired:
             run.kill()
             result["error"]= "timeout"
             result["output"] = "TimeOut!"
-            print(json.dumps(result))
+            result_list.append(result)
             input_count += 1
             continue
         
@@ -85,6 +86,7 @@ for file in input_arr:
             result["answer"]="O"
         else:
             result["answer"] = "X"
-        json_data = json.dumps(result)
-        print(json_data)
+        result_list.append(result)
     input_count += 1
+    
+print(json.dumps(result_list))
