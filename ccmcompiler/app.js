@@ -15,9 +15,20 @@ app.get('/',function(req,res){
 app.post('/',function(req,res){
     // console.log(req.body);
     console.log('CCM GET World Class');
-    const code = JSON.parse(req.body.code);
-    fs.writeFileSync("./data/user.py",code);
-    allcompile.allcompile("python",(callback) =>{
+    const data = JSON.parse(req.body.data);
+    // console.log(data);
+    switch(data.lang){
+        case "python":
+            fs.writeFileSync("./data/user.py",data.code);
+            break;
+        case "c":
+            fs.writeFileSync("./data/main.c",data.code);
+            break;
+        case "cpp":
+            fs.writeFileSync("./data/main_cpp.cpp",data.code);
+            break;
+    }
+    allcompile.allcompile(data.lang,(callback) =>{
         if(callback == 400){
             console.log(400);
         }
