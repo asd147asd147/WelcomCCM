@@ -22,7 +22,7 @@ class Pagination extends Component {
     pages = _.range(1, this.pageCount+1);
 
     render() {
-        console.log(this.state.CurrentPage)
+        // console.log(this.state.CurrentPage);
         return (
             <nav> {/* VSCode 입력: nav>ul.pagination>li.page-item>a.page-link */}
             <ul className="pagination">
