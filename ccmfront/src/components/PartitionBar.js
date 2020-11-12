@@ -16,7 +16,7 @@ class PartitionBar extends Component {
           pos3: e.clientX
         }
       });
-      if(this.state.pos3>50 && (window.innerWidth-this.state.pos3)>15) {
+      if(this.state.pos3>300 && (window.innerWidth-this.state.pos3)>15) {
         document.querySelector("#root").style.width = (this.state.pos3)+"px";
         document.querySelector(".editor").style.width = (parseInt(window.innerWidth) - parseInt(document.querySelector("#root").style.width))+"px";
       }

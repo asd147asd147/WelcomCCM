@@ -29,6 +29,15 @@
     overflow: hidden;
 }
 
+#main {
+    height: 100%;
+}
+
+.inApp {
+    height: 100%;
+    white-space: nowrap;
+  }
+
 #root {
     height : 100%;
     width : 30%;
