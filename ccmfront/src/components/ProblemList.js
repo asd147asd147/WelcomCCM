@@ -53,9 +53,9 @@ class ProblemList extends Component {
         this.pagedProblems = _.slice(this.Problem, this.state.startIndex, this.state.startIndex + 10);
         this.list = this.pagedProblems.map((v)=>{
             return(
-                <tr key={"ProblemTr"+v.num} onClick={() => {console.log("clicked")}} className="cursor-pointer">
+                <tr key={"ProblemTr"+v.num}>
                     <td key={"ProblemNum"+v.num}>{v.num}</td>
-                    <td key={"ProblemTitle"+v.num}><a onClick={() => {console.log("clicked "+v.num)}}>{v.title}</a></td>
+                    <td key={"ProblemTitle"+v.num}><a onClick={(e) => {console.log("clicked "+v.num)}}>{v.title}</a></td>
                     <td key={"ProblemLevel"+v.num}>{v.level}</td>
                     <td key={"ProblemCategory"+v.num}>{v.category}</td>
                     <td key={"ProblemAuth"+v.num}>{v.writer}</td>
