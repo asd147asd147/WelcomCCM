@@ -1,3 +1,1 @@
-{"time": 0.0257, "output": "Hello World!\r\n", "memory": "143.36KB", "error": "noerror", "answer": "X"}
-{"time": 0.0245, "output": "Hello World!\r\n", "memory": "274.432KB", "error": "noerror", "answer": "X"}
-{"time": 0.0242, "output": "Hello World!\r\n", "memory": "266.24KB", "error": "noerror", "answer": "X"}
+[{"time": 0.0535, "output": "\uacb0\uacfc:[15, 14, 13, 12, 11]\r\n", "memory": "282.624KB", "error": "noerror", "answer": "O"}, {"time": 0.0535, "output": "\uacb0\uacfc:[15, 14, 13, 12, 11]\r\n", "memory": "282.624KB", "error": "noerror", "answer": "O"}, {"time": 0.0535, "output": "\uacb0\uacfc:[15, 14, 13, 12, 11]\r\n", "memory": "282.624KB", "error": "noerror", "answer": "O"}]
