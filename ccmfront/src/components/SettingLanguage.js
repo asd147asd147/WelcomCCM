@@ -5,7 +5,14 @@ import './SettingLanguage.css';
 
 class SettingLanguage extends Component {
     render() {
-        var lang = window.location.href.substr(window.location.href.lastIndexOf('=') + 1);
+        var num = 0
+        if(window.location.href.lastIndexOf('&') !== -1){
+        num = window.location.href.substr(window.location.href.lastIndexOf('num') + 4, window.location.href.lastIndexOf('&')-(window.location.href.lastIndexOf('num') + 4));
+        }
+        else{
+        num = window.location.href.substr(window.location.href.lastIndexOf('num') + 4, );
+        }
+        var lang = window.location.href.substr(window.location.href.lastIndexOf("lang") + 5);
         // console.log(lang)
         switch(lang){
             case 'python3':
@@ -27,9 +34,9 @@ class SettingLanguage extends Component {
                 { lang }
             </Dropdown.Toggle>
             <Dropdown.Menu>
-                <Dropdown.Item href="?lang=python">Python3</Dropdown.Item>
-                <Dropdown.Item href="?lang=c">C</Dropdown.Item>
-                <Dropdown.Item href="?lang=cpp">C++</Dropdown.Item>
+                <Dropdown.Item href={"?num="+num + "&lang=python3"}>Python3</Dropdown.Item>
+                <Dropdown.Item href={"?num="+num + "&lang=c"}>C</Dropdown.Item>
+                <Dropdown.Item href={"?num="+num + "&lang=cpp"}>C++</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
       );

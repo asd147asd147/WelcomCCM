@@ -4,8 +4,8 @@ const resetCodeBtn = document.querySelector('.editor__reset');
 const dark_theme = document.querySelector('#theme__dark');
 const light_theme = document.querySelector('#theme__light');
 
-var lang = window.location.href.substr(window.location.href.lastIndexOf('=') + 1);
-
+var lang = window.location.href.substr(window.location.href.lastIndexOf('lang') + 5);
+// console.log(lang)
 let defaultCode = '';
 let mode = ''
 let compiler_mode = ''
@@ -134,7 +134,7 @@ executeCodeBtn.addEventListener('click', () => {
     const jsonfile = JSON.stringify(userdata);
     // console.log(jsonfile);
     try {
-        fetch('localhost:3001/', {
+        fetch('http://choiwonjune.iptime.org:3001/problem', {
             method: 'POST',
             body: JSON.stringify({data: `${ jsonfile }`}),
             headers:{
@@ -143,10 +143,12 @@ executeCodeBtn.addEventListener('click', () => {
             })
             .then(res => res.json())
             .then(res => {
-                const json_data = JSON.parse(res);
+                const json_data = JSON.parse(res)[0];
+                // console.log(json_data)
                 const output = json_data.output.split('\n');
                 const time = json_data.time;
                 const memory = json_data.memory;
+                const answer = json_data.answer;
                 output.pop();
                 // console.log(output);
                 output.forEach(res_log =>{
@@ -154,6 +156,7 @@ executeCodeBtn.addEventListener('click', () => {
                 })
                 console.log("Time: " + time);
                 console.log("Memory: " + memory);
+                console.log("Answer: " + answer)
                 // console.log(JSON.parse(res.result));
                 editorLib.printToConsole();
             }).catch (function(){

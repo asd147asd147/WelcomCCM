@@ -1,1 +1,5 @@
-{"time": 0.0953, "output": "Hello World!\r\n", "memory": 94208, "error": "noerror"}
+[472] Failed to execute script compile_py
+Traceback (most recent call last):
+  File "compile_py.py", line 12, in <module>
+    FC.checkdir(os.path.abspath('./'+sys.argv[3]+'/output'))
+IndexError: list index out of range

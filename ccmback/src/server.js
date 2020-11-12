@@ -54,8 +54,8 @@ const client = new Client({
 	port : 5432,
 });
 
-
 client.connect();
+
 app.get('/problem/', function(req, res){
 	const query = 'SELECT * FROM public.issues WHERE num = '+req.query.num+';';
 	// console.log(query)
@@ -73,6 +73,22 @@ app.get('/problem/', function(req, res){
 			console.log(err);
 		});
 });
-
+app.get('/problemlist/', function(req, res){
+	const query = 'SELECT * FROM public.issues;';
+	// console.log(query)
+	
+	client.query(query)
+		.then(que => {
+			const rows = que.rows;
+			// rows.map(row => {
+			// 	console.log(`Read: ${JSON.stringify(row)}`);
+			// });
+			res.send(JSON.stringify(rows));
+			// client.end();
+		})
+		.catch(err => {
+			console.log(err);
+		});
+});
 
 module.exports = app;

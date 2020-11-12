@@ -29,7 +29,7 @@ app.post('/problem',function(req,res){
         const result = fs.readFileSync("./user1/result.txt");
         const result_string = result.toString();
         console.log(result_string);
-        res.json(JSON.stringify(result_string));
+        res.send(JSON.stringify(result_string));
     });
 });
 

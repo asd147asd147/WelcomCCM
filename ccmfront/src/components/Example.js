@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 
 const Example = (data) => {
     const ioexam = data.ioexam.map(v =>
