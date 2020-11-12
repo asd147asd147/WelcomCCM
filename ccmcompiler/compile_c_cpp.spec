@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['compile_c_cpp.py'],
-             pathex=['D:\\Won-June\\contest\\CCM\\pnu-swedu-ccm\\ccmcompiler'],
+             pathex=['C:\\Users\\USER\\Documents\\GitHub\\WelcomCCM\\ccmcompiler'],
              binaries=[],
              datas=[],
              hiddenimports=[],
