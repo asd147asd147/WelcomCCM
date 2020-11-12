@@ -5,7 +5,6 @@ import json
 import sys
 import psutil
 import languages as lan
-import sys
 import FolderChecker as FC
 
 
