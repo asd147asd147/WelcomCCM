@@ -12,7 +12,6 @@ FC.checkdir(os.path.abspath('./'+sys.argv[3]+'/output'))
 input_count = 1
 com_language = dict()
 result_list = list()
-result = {"time": 0, "output": "", "memory" : "0", "error" : "noerror","answer" : "X"}
 select = sys.argv[1]
 timeout_sec = float(sys.argv[2])
 
@@ -25,6 +24,7 @@ com_language = lan.language(select,sys.argv[3]).compile_language
 cmd_arr = com_language["compile"]["compile_cmd"]
 
 for file in input_arr:
+    result = {"time": 0, "output": "", "memory" : "0", "error" : "noerror","answer" : "X"}
     f = open("./"+sys.argv[3]+"/output/"+str(input_count)+".out",'w',encoding='CP949')
     in_proc = subprocess.run(args=["type",file],shell=True,capture_output=True,encoding='CP949')
     start_time = timer()
@@ -70,10 +70,10 @@ for file in input_arr:
     check =  subprocess.Popen(args ="python answer_check.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE)
     (stdout,stderr) = check.communicate(input = str(input_count).encode("utf8"))
 
-    if(stdout.decode('utf8')[:-2] == "True"):
-        result["answer"]="O"
+    if(stdout.decode('utf8').rstrip()== "True"):
+        result["answer"]='O'
     else:
-        result["answer"] = "X"
+        result["answer"] = 'X'
     result_list.append(result)
     input_count += 1
 print(json.dumps(result_list))
