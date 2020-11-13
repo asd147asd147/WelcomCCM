@@ -4,8 +4,8 @@ const resetCodeBtn = document.querySelector('.editor__reset');
 const dark_theme = document.querySelector('#theme__dark');
 const light_theme = document.querySelector('#theme__light');
 
-var lang = window.location.href.substr(window.location.href.lastIndexOf('=') + 1);
-
+var lang = window.location.href.substr(window.location.href.lastIndexOf('lang') + 5);
+// console.log(lang)
 let defaultCode = '';
 let mode = ''
 let compiler_mode = ''
@@ -143,7 +143,8 @@ executeCodeBtn.addEventListener('click', () => {
             })
             .then(res => res.json())
             .then(res => {
-                const json_data = JSON.parse(res);
+                const json_data = JSON.parse(res)[0];
+                // console.log(json_data)
                 const output = json_data.output.split('\n');
                 const time = json_data.time;
                 const memory = json_data.memory;

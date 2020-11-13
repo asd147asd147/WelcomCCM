@@ -2,26 +2,45 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    let datas = [];
-    for(let i = 0; i < 10; i++){
-      let obj = {
-        num: i,
-        title: "피보나치 함수",
-        level: i,
-        category: "stack",
-        writer: "testUser" + i,
-        desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",
-        restric:[
-          JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),
-          JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),
-        ],
-        ioexam:[
-          JSON.stringify({"id":1, "input":"1 10", "output":"7"}),
-        ],
-        accuracy: 0.5,
-      }
-      datas.push(obj)
-    }
+    let datas = [
+      {num:1, title: "문제 이름입니당.", level : 5, category: "a", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:2, title: "문제 이름입니다.", level : 4, category: "b", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:3, title: "문제이름입니당.", level : 3, category: "c", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:4, title: "문제이름임", level : 2, category: "d", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:5, title: "문제 이름일까 아닐까", level : 1, category: "e", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:6, title: "문제 이름입니당.", level : 5, category: "a", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:7, title: "문제 이름입니다.", level : 4, category: "b", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:8, title: "문제이름입니당.", level : 3, category: "c", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:9, title: "문제이름임", level : 2, category: "d", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:10, title: "문제 이름일까 아닐까", level : 1, category: "e", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:11, title: "문제 이름입니당.", level : 5, category: "a", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:12, title: "문제 이름입니다.", level : 4, category: "b", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:13, title: "문제이름입니당.", level : 3, category: "c", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:14, title: "문제이름임", level : 2, category: "d", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:15, title: "문제 이름일까 아닐까", level : 1, category: "e", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:16, title: "문제 이름입니당.", level : 5, category: "a", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:17, title: "문제 이름입니다.", level : 4, category: "b", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:18, title: "문제이름입니당.", level : 3, category: "c", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:19, title: "문제이름임", level : 2, category: "d", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:20, title: "문제 이름일까 아닐까", level : 1, category: "e", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:21, title: "문제 이름입니당.", level : 5, category: "a", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:22, title: "문제 이름입니다.", level : 4, category: "b", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:23, title: "문제이름입니당.", level : 3, category: "c", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:24, title: "문제이름임", level : 2, category: "d", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],},
+      {num:25, title: "문제 이름일까 아닐까", level : 1, category: "e", writer: "Hyunju an", accuracy: 50,desc: "어떤 수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min과 max를 포함한 사이에 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",restric:[JSON.stringify({"id":1, "cont":"시간 제한: 2초"}),JSON.stringify({"id":2, "cont":"메모리 제한: 512MB"}),],ioexam:[JSON.stringify({"id":1, "input":"1 10", "output":"7"}),],}
+    ];
+    // for(let i = 0; i < 10; i++){
+    //   let obj = {
+    //     num: i,
+    //     title: "피보나치 함수",
+    //     level: i,
+    //     category: "stack",
+    //     writer: "testUser" + i,
+        
+    //     accuracy: 0.5,
+    //   }
+    //   datas.push(obj)
+    // }
 
     return queryInterface.bulkInsert('issues', datas, {});
   },

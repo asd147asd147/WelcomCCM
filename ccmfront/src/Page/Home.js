@@ -12,7 +12,7 @@ class Home extends Component{
             </div>
             <div id="root">
                 <div className="tableDiv">
-                    <ProblemList className="problemListTable"></ProblemList>
+                    <ProblemList className="problemListTable" proper={this.props}></ProblemList>
                 </div>
             </div>
         </div>
