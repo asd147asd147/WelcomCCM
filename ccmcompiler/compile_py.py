@@ -52,9 +52,9 @@ for file in input_arr:
     real_time = round(end_time - start_time,4)
     result['time'] = real_time
     if(stdout.decode('CP949') == ""):
-        index = stderr.decode('CP949').find(',')
-        string = stderr.decode('CP949')[index+2:]
+        string = stderr.decode('CP949').replace('  File "'+com_language["compile"]["src_path"]+'", ',"")
         result['output'] = string
+        #result['output'] = stderr.decode('CP949')
         result["error"] = "code"
     else:
         result['output'] = stdout.decode('CP949')

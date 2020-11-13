@@ -30,12 +30,10 @@ for file in input_arr:
     cmd_compile = subprocess.Popen(compile_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     (stdout,stderr) = cmd_compile.communicate()
     if(stderr.decode('UTF8') !=""):
-        index = stderr.decode('UTF8').find('error')
-        string = stderr.decode('UTF8')[index:]
+        string = stderr.decode('CP949').replace(com_language["compile"]["src_path"],"")
         result['output'] = string
-        json_data = json.dumps(result)
         result['error'] = "syntex error"
-        print(json.dumps(result))
+        result_list.append(result)
 
     else:
         run_arr = [com_language["run"]["command"]]
@@ -66,8 +64,7 @@ for file in input_arr:
 
         result['time'] = real_time
         if(stdout.decode('UTF8') == ""):
-            index = stderr.decode('UTF8').find(',')
-            string = stderr.decode('UTF8')[index+2:]
+            string = stderr.decode('CP949').replace(com_language["compile"]["src_path"],"")
             result['output'] = string
             result['error'] = "run-time error"
         else:
