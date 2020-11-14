@@ -6,6 +6,7 @@ apt-get install curl -y && \
 curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
 apt-get install nodejs -y && \
 apt-get install build-essential -y && \
-apt-get install python3
-ADD . /home/ccmcompile/
+apt-get install python3 
+
+COPY . /home/ccmcompile/
 WORKDIR /home/ccmcompile/

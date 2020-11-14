@@ -54,11 +54,11 @@ const client = new Client({
 	port : 5432,
 });
 
-client.connect();
 
+client.connect();
 app.get('/problem/', function(req, res){
 	const query = 'SELECT * FROM public.issues WHERE num = '+req.query.num+';';
-	// console.log(query)
+	// console.log(req)
 	
 	client.query(query)
 		.then(que => {
@@ -72,6 +72,7 @@ app.get('/problem/', function(req, res){
 		.catch(err => {
 			console.log(err);
 		});
+	
 });
 app.get('/problemlist/', function(req, res){
 	const query = 'SELECT * FROM public.issues;';

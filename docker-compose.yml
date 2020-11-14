@@ -1,6 +1,44 @@
 version: "3.3"
 
 services:
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - /mnt/postgres/data:/var/lib/postgresql/data
+  back:
+    image: ccmback:1.2
+    build:
+      context: ./ccmback
+      dockerfile: Dockerfile
+    volumes:
+      - "./ccmback:/app"
+      - "./ccmback/app/node_modules"
+    ports:
+      - "5000:5000"
+    stdin_open: true
+    tty: true
+    links:
+      - postgres:back-to-db
+
+  compiler:
+    image: ccmcomfiler:1.3
+    build:
+      context: ./ccmcompiler
+      dockerfile: Dockerfile
+    volumes:
+      - "./ccmcompiler:/app"
+      - "./ccmcompiler/app/node_modules"
+    ports:
+      - "3001:3001"
+    stdin_open: true
+    tty: true
+    links:
+      - back:compiler-to-back
+
   front:
     image: ccmfront:1.2
     build:
@@ -10,19 +48,12 @@ services:
       - "./ccmfront:/app"
       - "./ccmfront/app/node_modules"
     ports:
-      - "4000:3000"
+      - "3000:3000"
     stdin_open: true
     tty: true
+    links:
+        - compiler:front-to-compiler
+        - back:front-to-back
 
-  compiler:
-    image: ccmcomfiler:1.2
-    build:
-      context: ./ccmcompiler
-      dockerfile: Dockerfile
-    volumes:
-      - "./ccmcompiler:/app"
-      - "./ccmcompiler/app/node_modules"
-    ports:
-      - "5000:3000"
-    stdin_open: true
-    tty: true
+    
+
