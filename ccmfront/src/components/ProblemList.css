@@ -22,7 +22,7 @@ tr {
 .cursor-pointer {
     cursor: pointer;
 }
-ul {
+.pagination {
     display: flex;
     justify-content: center;
 }

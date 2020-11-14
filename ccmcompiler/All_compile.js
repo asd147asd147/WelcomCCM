@@ -4,7 +4,7 @@ var process = require('child_process');
 // select c++, c ~~
 var time_out = 1
 var user = "user1"
-exports.allcompile = function(select, callback) {
+exports.allcompile = function(select, num, callback) {
     if(select == "python"){
         process.execFile('./dist/compile_py',[select,time_out,user],function (err,stdout,stderr) {
             if(err) {

@@ -1,1 +1,1 @@
-[{"time": 0.0145, "output": "Hello World!\r\n", "memory": "270.336KB", "error": "noerror", "answer": "X"}, {"time": 0.0145, "output": "Hello World!\r\n", "memory": "270.336KB", "error": "noerror", "answer": "X"}, {"time": 0.0145, "output": "Hello World!\r\n", "memory": "270.336KB", "error": "noerror", "answer": "X"}]
+[{"time": 0.0561, "output": "['1', '10']\r\n", "memory": "192.512KB", "error": "noerror", "answer": "False"}, {"time": 0.0547, "output": "['2', '20']\r\n", "memory": "331.776KB", "error": "noerror", "answer": "False"}]

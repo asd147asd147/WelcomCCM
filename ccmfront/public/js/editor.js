@@ -5,6 +5,13 @@ const dark_theme = document.querySelector('#theme__dark');
 const light_theme = document.querySelector('#theme__light');
 
 var lang = window.location.href.substr(window.location.href.lastIndexOf('lang') + 5);
+var num = 0
+if(window.location.href.lastIndexOf('&') !== -1){
+    num = window.location.href.substr(window.location.href.lastIndexOf('num') + 4, window.location.href.lastIndexOf('&')-(window.location.href.lastIndexOf('num') + 4));
+}
+else{
+    num = window.location.href.substr(window.location.href.lastIndexOf('num') + 4, );
+}
 // console.log(lang)
 let defaultCode = '';
 let mode = ''
@@ -136,7 +143,7 @@ executeCodeBtn.addEventListener('click', () => {
     try {
         fetch('http://choiwonjune.iptime.org:3001/problem', {
             method: 'POST',
-            body: JSON.stringify({data: `${ jsonfile }`}),
+            body: JSON.stringify({data: `${ jsonfile }`,num: num}),
             headers:{
                 'Content-Type': 'application/json'
             }

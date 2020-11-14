@@ -82,7 +82,7 @@ for file in input_arr:
         f.close()
         check =  subprocess.Popen(args ="python answer_check.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE)
         (stdout,stderr) = check.communicate(input = str(input_count).encode("utf8"))
-        if(stdout.decode('utf8')[:-2] == "True"):
+        if(stdout.decode('utf8').rstrip() == "True"):
             result["answer"]="O"
         else:
             result["answer"] = "X"

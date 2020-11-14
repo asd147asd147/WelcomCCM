@@ -7,10 +7,10 @@ class SettingLanguage extends Component {
     render() {
         var num = 0
         if(window.location.href.lastIndexOf('&') !== -1){
-        num = window.location.href.substr(window.location.href.lastIndexOf('num') + 4, window.location.href.lastIndexOf('&')-(window.location.href.lastIndexOf('num') + 4));
+            num = window.location.href.substr(window.location.href.lastIndexOf('num') + 4, window.location.href.lastIndexOf('&')-(window.location.href.lastIndexOf('num') + 4));
         }
         else{
-        num = window.location.href.substr(window.location.href.lastIndexOf('num') + 4, );
+            num = window.location.href.substr(window.location.href.lastIndexOf('num') + 4, );
         }
         var lang = window.location.href.substr(window.location.href.lastIndexOf("lang") + 5);
         // console.log(lang)
