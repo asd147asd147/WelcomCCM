@@ -12,6 +12,7 @@ FC.checkdir(os.path.abspath('./'+sys.argv[3]+'/output'))
 input_count = 1
 com_language = dict()
 result_list = list()
+result = {}
 select = sys.argv[1]
 timeout_sec = float(sys.argv[2])
 
@@ -69,11 +70,12 @@ for file in input_arr:
 
     check =  subprocess.Popen(args ="python answer_check.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE,shell=True)
     (stdout,stderr) = check.communicate(input = str(input_count).encode("utf8"))
-
-    if(stdout.decode('utf8').rstrip()== "True"):
-        result["answer"]='O'
+    # print(stdout.decode('utf8').rstrip())
+    answer = stdout.decode('utf8').rstrip()
+    if(answer == "True"):
+        result["answer"] = answer
     else:
-        result["answer"] = 'X'
+        result["answer"] = answer
     result_list.append(result)
     input_count += 1
 print(json.dumps(result_list))

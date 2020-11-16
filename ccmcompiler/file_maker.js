@@ -7,7 +7,7 @@ const makeFolder = (dir) =>{
 
 // data ~~ 따로 받아옴
 // 경우 따라 py, c, c++ 코드로 변환
-exports.filemaker = function(select, code) {
+exports.filemaker = function(select, code, num) {
     if(select == "python"){
         makeFolder("./user1")
         fs.writeFile('./user1/main.py',code,'utf-8',function(e){
