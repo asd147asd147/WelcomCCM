@@ -13,7 +13,7 @@ class ProblemList extends Component {
     }
 
     _readList = async() => {
-        const res = await (await axios.get('http://choiwonjune.iptime.org:5000/problemlist/'));
+        const res = await (await axios.get('/problemlist/'));
         let plist = []
         res.data.map(d => {
             return(plist.push(d))

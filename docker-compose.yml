@@ -40,7 +40,7 @@ services:
       - back:compiler-to-back
 
   front:
-    image: ccmfront:1.2
+    image: ccmfront:1.3
     build:
       context: ./ccmfront
       dockerfile: Dockerfile
