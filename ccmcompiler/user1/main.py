@@ -1,2 +1,1 @@
-a = input().split()
-print(a)
+print("Hello World!123")

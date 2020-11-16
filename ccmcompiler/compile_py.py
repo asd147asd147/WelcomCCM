@@ -30,7 +30,7 @@ for file in input_arr:
     in_proc = subprocess.run(args=["type",file],shell=True,capture_output=True,encoding='CP949')
     start_time = timer()
     try:
-        run = subprocess.Popen(args = cmd_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE)
+        run = subprocess.Popen(args = cmd_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE,shell=True)
         p = psutil.Process(run.pid)
         Memoryuse = p.memory_info()[0]
         (stdout, stderr) = run.communicate(timeout = timeout_sec,input=in_proc.stdout.encode('CP949'))
@@ -53,9 +53,9 @@ for file in input_arr:
     real_time = round(end_time - start_time,4)
     result['time'] = real_time
     if(stdout.decode('CP949') == ""):
-        index = stderr.decode('CP949').find(',')
-        string = stderr.decode('CP949')[index+2:]
+        string = stderr.decode('CP949').replace('  File "'+com_language["compile"]["src_path"]+'", ',"")
         result['output'] = string
+        #result['output'] = stderr.decode('CP949')
         result["error"] = "code"
     else:
         result['output'] = stdout.decode('CP949')
@@ -68,7 +68,7 @@ for file in input_arr:
     f.write(result['output'].rstrip())
     f.close()
 
-    check =  subprocess.Popen(args ="python answer_check.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE)
+    check =  subprocess.Popen(args ="python answer_check.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE,shell=True)
     (stdout,stderr) = check.communicate(input = str(input_count).encode("utf8"))
     # print(stdout.decode('utf8').rstrip())
     answer = stdout.decode('utf8').rstrip()
