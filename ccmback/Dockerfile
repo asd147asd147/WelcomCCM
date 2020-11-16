@@ -8,8 +8,6 @@ RUN npm install
 
 COPY . /app
 
-CMD ["yarn"]
-CMD ["yarn", "db:create"]
-CMD ["yarn", "db:migrate"]
-CMD ["yarn", "db:seed"]
+RUN yarn
+
 CMD ["yarn", "dev"]

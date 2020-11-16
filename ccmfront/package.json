@@ -16,6 +16,7 @@
     "http-proxy-middleware": "^1.0.6",
     "lodash": "^4.17.20",
     "nodemon": "^2.0.6",
+    "python3": "0.0.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-bootstrap-dropdown": "^0.3.0",
