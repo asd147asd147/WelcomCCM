@@ -39,7 +39,7 @@ for file in input_arr:
         run_arr = [com_language["run"]["command"]]
         start_time = timer()
         try:
-            run = subprocess.Popen(args =run_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+            run = subprocess.Popen(args =run_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE,shell=True)
             p = psutil.Process(run.pid)
             Memoryuse = p.memory_info()[0]
             (stdout, stderr) = run.communicate(timeout = timeout_sec,input=in_proc.stdout.encode('UTF8'))
@@ -77,7 +77,7 @@ for file in input_arr:
 
         f.write(result['output'].rstrip())
         f.close()
-        check =  subprocess.Popen(args ="python answer_check.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE)
+        check =  subprocess.Popen(args ="python answer_check.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE,shell=True)
         (stdout,stderr) = check.communicate(input = str(input_count).encode("utf8"))
         if(stdout.decode('utf8').rstrip() == "True"):
             result["answer"]="O"
