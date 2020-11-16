@@ -43,7 +43,7 @@ class Problem extends Component{
     else{
       num = window.location.href.substr(window.location.href.lastIndexOf('num') + 4, );
     }
-    const res = await (await axios.get('/problem/',
+    const res = await (await axios.get('http://choiwonjune.iptime.org:5000/problem/',
     {
       params: {
         num: num

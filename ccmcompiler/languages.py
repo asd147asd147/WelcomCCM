@@ -36,7 +36,7 @@ class language:
                                 "exe_path" : os.path.abspath('./data')+'/user.pyc',
                                 "max_real_time": 10000,
                                 "max_memory": 128 * 1024 * 1024,
-                                "compile_cmd" : "python "+ './'+user+'/main.py'
+                                "compile_cmd" : "python3 "+ './'+user+'/main.py'
                             }
                         ,
                         "run":

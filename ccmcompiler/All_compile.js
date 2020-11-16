@@ -6,7 +6,7 @@ var time_out = 1
 var user = "user1"
 exports.allcompile = function(select, num, callback) {
     if(select == "python"){
-        var exec_code = 'python ./compile_py.py '+select+' '+time_out+' '+user;
+        var exec_code = 'python3 ./compile_py.py '+select+' '+time_out+' '+user;
         process.exec(exec_code,function (err,stdout,stderr) {
             if(err) {
                 fs.writeFile('./user1/result.txt',stderr,'utf-8',function(e){
@@ -32,7 +32,7 @@ exports.allcompile = function(select, num, callback) {
         });
     }
     else{
-        var exec_code = 'python ./compile_c_cpp.py '+select+' '+time_out+' '+user;
+        var exec_code = 'python3 ./compile_c_cpp.py '+select+' '+time_out+' '+user;
         process.exec(exec_code,function (err,stdout,stderr) {
             if(err) {
                 fs.writeFile('./user1/result.txt',stderr,'utf-8',function(e){

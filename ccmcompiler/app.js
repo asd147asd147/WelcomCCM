@@ -13,7 +13,6 @@ app.get('/',function(req,res){
     res.send(JSON.stringify('CCM GET World Class'));
 });
 
-
 app.post('/problem',function(req,res){
     // console.log(req.body);
     console.log('CCM GET World Class');
@@ -21,7 +20,7 @@ app.post('/problem',function(req,res){
     const num = req.body.num;
 
     try{
-        fetch('compiler-to-back/problem/?num='+num,{
+        fetch('http://localhost:5000/problem/?num='+num,{
             method: 'GET'
         })
         .then(res => res.json())
