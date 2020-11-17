@@ -37,31 +37,29 @@ $ copy .env env
 도커에서만 실행할 경우
 + Docker Compose
 ```
-$ docker-compose up -d
+/WelcomCCM$ docker-compose up -d
 ```
 
 도커에서 실행하지 않을 경우
 + Database init
 ```
-$ yarn db:create
-$ yarn db:migrate
-$ yarn db:seed
+/WelcomCCM/ccmback$ yarn db:create
+/WelcomCCM/ccmback$ yarn db:migrate
+/WelcomCCM/ccmback$ yarn db:seed
 ```
 + Backend server Run
 ```
-$ yarn dev
+/WelcomCCM/ccmback$ yarn dev
 ```
 
 + Compiler Server Run
 ```
-$ cd ../ccmcompiler
-$ npm start
+/WelcomCCM/ccmcompiler$ npm start
 ```
 
 + Frontend Server Run
 ```
-$ cd ../ccmfront
-$ npm start
+/WelcomCCM/ccmfront$ npm start
 ```
 
 ## 참여인원
