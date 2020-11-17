@@ -34,6 +34,13 @@ $ yarn
 $ copy .env env
 ```
 
+도커에서만 실행할 경우
++ Docker Compose
+```
+$ docker-compose up -d
+```
+
+도커에서 실행하지 않을 경우
 + Database init
 ```
 $ yarn db:create
