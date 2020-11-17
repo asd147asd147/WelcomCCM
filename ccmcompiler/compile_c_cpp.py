@@ -27,7 +27,7 @@ for file in input_arr:
     result = {"time": 0, "output": "", "memory" : "0","error" : "noerror",'answer' : 'X'} 
     f = open("./"+sys.argv[3]+"/output/"+str(input_count)+".out",'w',encoding='UTF8')
     in_proc = subprocess.run(args=["type",file],shell=True,capture_output=True,encoding='UTF8')
-    cmd_compile = subprocess.Popen(compile_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    cmd_compile = subprocess.Popen(compile_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE,shell=True)
     (stdout,stderr) = cmd_compile.communicate()
     if(stderr.decode('UTF8') !=""):
         string = stderr.decode('CP949').replace(com_language["compile"]["src_path"],"")
@@ -80,7 +80,7 @@ for file in input_arr:
         check =  subprocess.Popen(args ="python answer_check.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE,shell=True)
         (stdout,stderr) = check.communicate(input = str(input_count).encode("utf8"))
         if(stdout.decode('utf8').rstrip() == "True"):
-            result["answer"]="O"
+            result["answer"] = "O"
         else:
             result["answer"] = "X"
         result_list.append(result)

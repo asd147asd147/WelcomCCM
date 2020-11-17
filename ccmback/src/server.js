@@ -48,12 +48,41 @@ const { Client } = require('pg');
 
 const client = new Client({
 	user : 'postgres',
-	host : 'back-to-db',
+	host : 'localhost',
 	database : 'ccm',
 	password : 'postgres',
 	port : 5432,
 });
 
+var problem_cnt = 26;
+app.get('/submit/', function(req, res){
+	var ioexam = []
+	var rest = []
+	for(var i=0; i < req.query.input.length; i++){
+		var input = (req.query.input[i]).toString();
+		var output = (req.query.output[i]).toString();
+		ioexam.push(JSON.stringify({"id":i+1,"input":input,"output":output}))
+	}
+	for(var i=0; i < req.query.rest.length; i++){
+		var restric = (req.query.rest[i]).toString();
+		rest.push(JSON.stringify({"id":i+1,"cont":restric}))
+	}
+
+	const io = (JSON.stringify(ioexam)).substring(1,JSON.stringify(ioexam).length-1)
+	const re = (JSON.stringify(rest)).substring(1,JSON.stringify(rest).length-1)
+
+	const query = 'INSERT INTO public.issues (num,title,level,category,writer,ioexam,restric,accuracy)\
+	VALUES('+problem_cnt+',\''+req.query.title+'\','+req.query.level+',\'None\',\'USER\','+'\'{'+io+'}\','+'\'{'+re+'}\''+',0.5)'+';';
+	problem_cnt++;
+	client.query(query)
+		.then(que => {
+			console.log(que);
+		})
+		.catch(err => {
+			console.log(err);
+		});
+	
+});
 
 client.connect();
 app.get('/problem/', function(req, res){

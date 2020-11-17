@@ -1,5 +1,1 @@
-<<<<<<< Updated upstream
-[{"time": 0.0578, "output": "Hello World!123\r\n", "memory": "196.608KB", "error": "noerror", "answer": "X"}, {"time": 0.0528, "output": "Hello World!123\r\n", "memory": "327.68KB", "error": "noerror", "answer": "X"}, {"time": 0.0539, "output": "Hello World!123\r\n", "memory": "323.584KB", "error": "noerror", "answer": "X"}]
-=======
-[{"time": 0.6346, "output": "Hello World!\r\n", "memory": "77.824KB", "error": "noerror", "answer": "X"}, {"time": 0.0343, "output": "Hello World!\r\n", "memory": "282.624KB", "error": "noerror", "answer": "X"}]
->>>>>>> Stashed changes
+[{"time": 0.0484, "output": "Hello World!\r\n", "memory": "1.851392MB", "error": "noerror", "answer": "X"}, {"time": 0.0368, "output": "Hello World!\r\n", "memory": "1.867776MB", "error": "noerror", "answer": "X"}]
