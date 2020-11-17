@@ -6,9 +6,9 @@ apt-get install curl -y && \
 curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
 apt-get install nodejs -y && \
 apt-get install build-essential -y && \
-apt-get install python3 && \
-apt-get install python3-pip && \
-pip3 install psutil
+apt-get install python3
 
 COPY . /home/ccmcompile/
+RUN apt-get install python3-pip -y
+RUN pip3 install psutil
 WORKDIR /home/ccmcompile/

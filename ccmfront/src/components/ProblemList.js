@@ -13,7 +13,7 @@ class ProblemList extends Component {
     }
 
     _readList = async() => {
-        const res = await (await axios.get('/problemlist/'));
+        const res = await (await axios.get('http://localhost:5000/problemlist/'));
         let plist = []
         res.data.map(d => {
             return(plist.push(d))

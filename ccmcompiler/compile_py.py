@@ -28,6 +28,7 @@ for file in input_arr:
     result = {"time": 0, "output": "", "memory" : "0", "error" : "noerror","answer" : "X"}
     f = open("./"+sys.argv[3]+"/output/"+str(input_count)+".out",'w',encoding='CP949')
     in_proc = subprocess.run(args=["type",file],shell=True,capture_output=True,encoding='CP949')
+    # print(in_proc)
     start_time = timer()
     try:
         run = subprocess.Popen(args = cmd_arr, stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE,shell=True)
@@ -71,11 +72,10 @@ for file in input_arr:
     check =  subprocess.Popen(args ="python answer_check.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE,stdin=subprocess.PIPE,shell=True)
     (stdout,stderr) = check.communicate(input = str(input_count).encode("utf8"))
     # print(stdout.decode('utf8').rstrip())
-    answer = stdout.decode('utf8').rstrip()
-    if(answer == "True"):
-        result["answer"] = answer
+    if(stdout.decode('utf8').rstrip() == "True"):
+        result["answer"] = "O"
     else:
-        result["answer"] = answer
+        result["answer"] = "X"
     result_list.append(result)
     input_count += 1
 print(json.dumps(result_list))

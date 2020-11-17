@@ -43,7 +43,7 @@ module.exports = {
       },
       desc: {
         type: Sequelize.TEXT,
-        allowNull: false,
+        allowNull: true,
       }
     }),
   down: (queryInterface, Sequelize) => queryInterface.dropTable('issues'),
